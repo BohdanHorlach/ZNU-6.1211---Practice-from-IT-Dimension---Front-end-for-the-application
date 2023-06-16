@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Butt Committee',
+      title: 'ApplicationName',
       theme: ThemeData(
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
