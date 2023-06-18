@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/sign%20in/sign%20up/house%20manager/change_house.dart';
+import 'package:flutter_application_1/presentation/sign%20in/widgets/entry_field.dart';
 import 'package:flutter_application_1/presentation/sign%20in/widgets/main_name_page.dart';
 
 class SignUpHouseManager extends StatefulWidget {
-  final List<TextEditingController> listController = [
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController()
-  ];
-  final List<String> listLabel = ['City', 'Street', 'House'];
-  SignUpHouseManager({super.key});
+  const SignUpHouseManager({super.key});
 
   @override
   State<SignUpHouseManager> createState() => _SignUpHouseManagerState();
 }
 
 class _SignUpHouseManagerState extends State<SignUpHouseManager> {
-  List<bool> listValidate = [false, false, false];
+  final listTextLield = [
+    EntryField(label: 'City'),
+    EntryField(label: 'Street'),
+    EntryField(label: 'House')
+  ];
   //ЗАГЛУШКА
   void _onClick() {
     String result = '';
-    for (int i = 0; i < widget.listController.length; i++) {
-      result += "${widget.listController[i].text} ";
+    for (int i = 0; i < listTextLield.length; i++) {
+      result += "${listTextLield[i].controller.text} ";
     }
     print(result);
   }
@@ -37,26 +36,11 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
             const MainNamePage(text: 'Location of the building'),
             ListView.builder(
               shrinkWrap: true,
-              itemCount: widget.listController.length,
+              itemCount: listTextLield.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: widget.listLabel[index],
-                      errorText: listValidate[index]
-                          ? '${widget.listLabel[index]} is Empty'
-                          : null,
-                    ),
-                    controller: widget.listController[index],
-                    onChanged: (value) {
-                      setState(() {
-                        listValidate[index] =
-                            widget.listController[index].text == '';
-                      });
-                    },
-                  ),
+                  child: listTextLield[index],
                 );
               },
             ),
@@ -66,10 +50,10 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
                 onPressed: () {
                   bool isCompletedForm = true;
                   setState(() {
-                    for (int i = 0; i < widget.listController.length; i++) {
-                      if (widget.listController[i].text == '') {
+                    for (int i = 0; i < listTextLield.length; i++) {
+                      if (listTextLield[i].controller.text == '') {
                         isCompletedForm = false;
-                        listValidate[i] = true;
+                        listTextLield[i].isEmpty = true;
                       }
                     }
                   });
