@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/sign in/sign up/house manager/first_page.dart';
+import '../presentation/sign in/sign up/house manager/sign_up_house_manager.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -7,12 +7,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ApplicationName',
+      title: 'Application',
       theme: ThemeData(
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
       ),
-      home: SignUpHouseManager(),
+      home: const SignUpHouseManager(),
     );
   }
 }
