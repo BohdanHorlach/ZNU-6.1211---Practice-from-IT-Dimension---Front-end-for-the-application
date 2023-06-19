@@ -1,0 +1,4 @@
+#Mon Jun 19 17:20:18 EEST 2023
+base.0=C\:\\Coding\\learnMobileDev\\flutter\\final_app_clone\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

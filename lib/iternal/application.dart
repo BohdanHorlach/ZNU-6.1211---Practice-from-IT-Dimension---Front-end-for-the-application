@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
       ),
-      home: SignUpHouseManager(),
+      home: const SignUpHouseManager(),
     );
   }
 }
