@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/domain/models/floor/apartment_model.dart';
 import 'package:flutter_application_1/domain/models/floor/floor_model.dart';
-import 'package:flutter_application_1/presentation/sign%20in/widgets/entry_field.dart';
 import 'package:flutter_application_1/presentation/sign%20in/widgets/main_name_page.dart';
 
 class ControllerFromApartmentText {
-  final numberTheApartment = EntryField(label: 'Number of Apatment');
-  final countOfRooms = EntryField(label: 'Count rooms');
+  final numberTheApartment = TextEditingController();
+  final countOfRooms = TextEditingController();
+  bool isEmpty = false;
 }
 
 // ignore: must_be_immutable
@@ -19,23 +19,24 @@ class EditFloor extends StatefulWidget {
 }
 
 class _EditFloorState extends State<EditFloor> {
-  final typeOfApartmen = EntryField(label: 'Type of Apartmen');
+  final controllerType = TextEditingController();
+  bool typeApartmentIsEmpty = false;
   List<ControllerFromApartmentText> listToApartCntrl = [];
 
   @override
   void initState() {
     final listApartment = widget.thisFloor.listApartment;
 
-    typeOfApartmen.controller.text = widget.thisFloor.typeOfFloor;
+    controllerType.text = widget.thisFloor.typeOfFloor;
     for (int i = 0; i < listApartment.length; i++) {
       listToApartCntrl.add(ControllerFromApartmentText());
     }
 
     for (int i = 0; i < listApartment.length; i++) {
-      listToApartCntrl[i].numberTheApartment.controller.text =
+      listToApartCntrl[i].numberTheApartment.text =
           listApartment[i].numberTheApartment.toString();
 
-      listToApartCntrl[i].countOfRooms.controller.text =
+      listToApartCntrl[i].countOfRooms.text =
           listApartment[i].countOfRooms.toString();
     }
     super.initState();
@@ -45,10 +46,10 @@ class _EditFloorState extends State<EditFloor> {
     bool isCorrect = true;
     setState(() {
       for (int i = 0; i < listToApartCntrl.length; i++) {
-        if (listToApartCntrl[i].countOfRooms.controller.text == '' ||
-            listToApartCntrl[i].numberTheApartment.controller.text == '') {
+        if (listToApartCntrl[i].countOfRooms.text == '' ||
+            listToApartCntrl[i].numberTheApartment.text == '') {
+          listToApartCntrl[i].isEmpty = true;
           isCorrect = false;
-          break;
         }
       }
     });
@@ -60,10 +61,9 @@ class _EditFloorState extends State<EditFloor> {
       var listApartment = widget.thisFloor.listApartment;
       for (int i = 0; i < listApartment.length; i++) {
         listApartment[i].numberTheApartment =
-            listToApartCntrl[i].numberTheApartment.controller.text;
+            listToApartCntrl[i].numberTheApartment.text;
 
-        listApartment[i].countOfRooms =
-            listToApartCntrl[i].countOfRooms.controller.text;
+        listApartment[i].countOfRooms = listToApartCntrl[i].countOfRooms.text;
       }
       Navigator.pop(context, widget.thisFloor);
     }
@@ -86,7 +86,19 @@ class _EditFloorState extends State<EditFloor> {
               const MainNamePage(text: 'Edit floor'),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: typeOfApartmen,
+                child: TextField(
+                  controller: controllerType,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    labelText: 'Type of Apartment',
+                    errorText: typeApartmentIsEmpty ? 'Type is Empty' : null,
+                  ),
+                  onChanged: (value) {
+                    setState(() {
+                      typeApartmentIsEmpty = controllerType.text == '';
+                    });
+                  },
+                ),
               ),
               ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 250),
@@ -123,11 +135,48 @@ class _EditFloorState extends State<EditFloor> {
                           ),
                           SizedBox(
                             width: 100,
-                            child: listToApartCntrl[index].countOfRooms,
+                            child: TextField(
+                              controller: listToApartCntrl[index].countOfRooms,
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: 'Count Rooms',
+                                errorText: listToApartCntrl[index].isEmpty
+                                    ? 'Count is Empty'
+                                    : null,
+                              ),
+                              onChanged: (value) {
+                                setState(() {
+                                  listToApartCntrl[index].isEmpty =
+                                      listToApartCntrl[index]
+                                              .countOfRooms
+                                              .text ==
+                                          '';
+                                });
+                              },
+                            ),
                           ),
                           SizedBox(
                             width: 150,
-                            child: listToApartCntrl[index].numberTheApartment,
+                            child: TextField(
+                              controller:
+                                  listToApartCntrl[index].numberTheApartment,
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelText: 'Count Rooms',
+                                errorText: listToApartCntrl[index].isEmpty
+                                    ? 'Count is Empty'
+                                    : null,
+                              ),
+                              onChanged: (value) {
+                                setState(() {
+                                  listToApartCntrl[index].isEmpty =
+                                      listToApartCntrl[index]
+                                              .numberTheApartment
+                                              .text ==
+                                          '';
+                                });
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -151,10 +200,6 @@ class _EditFloorState extends State<EditFloor> {
                           widget.thisFloor.listApartment
                               .add(ApartmentModel('0', '0'));
                           listToApartCntrl.add(ControllerFromApartmentText());
-                          int index = listToApartCntrl.length - 1;
-                          listToApartCntrl[index].countOfRooms.isEmpty = true;
-                          listToApartCntrl[index].numberTheApartment.isEmpty =
-                              true;
                         });
                       },
                       icon: const Icon(Icons.add, color: Colors.black),
