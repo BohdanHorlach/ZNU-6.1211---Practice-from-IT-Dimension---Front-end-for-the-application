@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/domain/models/floor/apartment_model.dart';
 import 'package:flutter_application_1/domain/models/floor/floor_model.dart';
-import 'edit_floor.dart';
+import '../../sign up/house manager/edit_floor.dart';
 
 // ignore: must_be_immutable
 class FloorInfo extends StatefulWidget {
