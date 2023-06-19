@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/sign%20in/sign%20up/house%20manager/change_house.dart';
-import 'package:flutter_application_1/presentation/sign%20in/widgets/entry_field.dart';
 import 'package:flutter_application_1/presentation/sign%20in/widgets/main_name_page.dart';
 
 class SignUpHouseManager extends StatefulWidget {
@@ -11,16 +10,18 @@ class SignUpHouseManager extends StatefulWidget {
 }
 
 class _SignUpHouseManagerState extends State<SignUpHouseManager> {
-  final listTextLield = [
-    EntryField(label: 'City'),
-    EntryField(label: 'Street'),
-    EntryField(label: 'House')
+  final listController = [
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController()
   ];
+  final listLabel = ['City', 'Street', 'House'];
+  List<bool> validateIsEmpty = List<bool>.filled(3, false);
   //ЗАГЛУШКА
   void _onClick() {
     String result = '';
-    for (int i = 0; i < listTextLield.length; i++) {
-      result += "${listTextLield[i].controller.text} ";
+    for (int i = 0; i < listController.length; i++) {
+      result += "${listController[i].text} ";
     }
     print(result);
   }
@@ -36,11 +37,26 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
             const MainNamePage(text: 'Location of the building'),
             ListView.builder(
               shrinkWrap: true,
-              itemCount: listTextLield.length,
+              itemCount: listController.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: listTextLield[index],
+                  child: TextField(
+                    controller: listController[index],
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      labelText: listLabel[index],
+                      errorText: validateIsEmpty[index]
+                          ? '${listLabel[index]} is Empty'
+                          : null,
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        validateIsEmpty[index] =
+                            listController[index].text == '';
+                      });
+                    },
+                  ),
                 );
               },
             ),
@@ -50,10 +66,10 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
                 onPressed: () {
                   bool isCompletedForm = true;
                   setState(() {
-                    for (int i = 0; i < listTextLield.length; i++) {
-                      if (listTextLield[i].controller.text == '') {
+                    for (int i = 0; i < listController.length; i++) {
+                      if (listController[i].text == '') {
                         isCompletedForm = false;
-                        listTextLield[i].isEmpty = true;
+                        validateIsEmpty[i] = true;
                       }
                     }
                   });
