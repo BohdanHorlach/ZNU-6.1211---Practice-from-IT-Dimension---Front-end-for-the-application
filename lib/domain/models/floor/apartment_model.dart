@@ -1,11 +1,11 @@
 class ApartmentModel {
-  String numberTheApartment = '1';
+  String numberOfApartments = '1';
   String countOfRooms = '1';
 
-  ApartmentModel(this.numberTheApartment, this.countOfRooms);
+  ApartmentModel(this.numberOfApartments, this.countOfRooms);
 
   @override
   String toString() {
-    return "$numberTheApartment:$countOfRooms";
+    return "$numberOfApartments:$countOfRooms";
   }
 }
