@@ -59,7 +59,7 @@ class _FloorInfoState extends State<FloorInfo> {
                       (1 / (widget.floor.listApartment.length * 2)),
                   child: Center(
                     child: Text(
-                        widget.floor.listApartment[index].numberTheApartment),
+                        widget.floor.listApartment[index].numberOfApartments),
                   ),
                 ),
               );

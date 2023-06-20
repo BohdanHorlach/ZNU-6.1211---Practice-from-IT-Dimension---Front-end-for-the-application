@@ -35,7 +35,7 @@ class _EditFloorState extends State<EditFloor> {
 
     for (int i = 0; i < listApartment.length; i++) {
       listToApartCntrl[i].numberTheApartment.text =
-          listApartment[i].numberTheApartment.toString();
+          listApartment[i].numberOfApartments.toString();
 
       listToApartCntrl[i].countOfRooms.text =
           listApartment[i].countOfRooms.toString();
@@ -61,7 +61,7 @@ class _EditFloorState extends State<EditFloor> {
     if (isValid() == true) {
       var listApartment = widget.thisFloor.listApartment;
       for (int i = 0; i < listApartment.length; i++) {
-        listApartment[i].numberTheApartment =
+        listApartment[i].numberOfApartments =
             listToApartCntrl[i].numberTheApartment.text;
 
         listApartment[i].countOfRooms = listToApartCntrl[i].countOfRooms.text;

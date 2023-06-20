@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../presentation/sign_in/sign_up/house_manager/sign_up_house_manager.dart';
+import '../presentation/sign_up/house_manager/sign_up_house_manager.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
