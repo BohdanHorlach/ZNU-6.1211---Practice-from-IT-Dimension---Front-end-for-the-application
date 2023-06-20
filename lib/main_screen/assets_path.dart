@@ -19,6 +19,7 @@ const String clockArrowGearIcon = 'assets/icons/clock_arrow_gear.svg';
 const String questionCircleIcon = 'assets/icons/question_circle.svg';
 const String phoneCircleIcon = 'assets/icons/phone_circle.svg';
 const String managementCompanyIcon = 'assets/icons/management_company.svg';
+const String wwwIcon = 'assets/icons/www.svg';
 
 //images
 
