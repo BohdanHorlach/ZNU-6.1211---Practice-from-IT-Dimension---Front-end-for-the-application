@@ -6,12 +6,16 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/domain/models/management_companies/companies_data.dart';
+import 'package:provider/provider.dart';
 
-import 'app_screens/building_management_screen.dart';
 import 'main_screen/screens.dart';
 
 void main() {
-  runApp(const App());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => AllCompaniesModel()),
+    //another models...
+  ], child: const App()));
 }
 
 class App extends StatelessWidget {

@@ -1,17 +1,11 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_screens/widgets/management_company_card.dart';
-
-// void addCompany() {
-//   setState(() {
-//     companyOffers.addAll({"name": "Adam"});
-//   });
-//   debugPrint(companyOffers.length as String?);
-// }
+import 'package:flutter_application_1/domain/models/management_companies/companies_data.dart';
+import 'package:provider/provider.dart';
 
 class BuildingManagementScreen extends StatefulWidget {
   const BuildingManagementScreen({super.key});
-
-  //Map<String, String> companyOffers;
 
   @override
   State<BuildingManagementScreen> createState() =>
@@ -21,19 +15,48 @@ class BuildingManagementScreen extends StatefulWidget {
 class BuildingManagementScreenState extends State<BuildingManagementScreen> {
   static const mainColor = Color.fromRGBO(0, 68, 148, 1);
 
-  late Map<String, String> companyOffers;
+  //final _companyInvitationFormKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+
+  late List<CompanyModel> companyOffers;
+
+  String? _validateEmail(value) {
+    if (value == null || value.isEmpty) {
+      return "Please enter an email";
+    } else if (!EmailValidator.validate(value)) {
+      return "Please enter a valid email";
+    }
+    return null;
+  }
 
   void addCompany() {
-    setState(() {
-      companyOffers.addAll({"name": "Adam"});
-    });
-    debugPrint(companyOffers.length as String?);
+    if (_formKey.currentState!.validate()) {
+      //Provider.of<AllCompaniesModel>(context, listen: false).approve();
+
+      Provider.of<AllCompaniesModel>(context, listen: false)
+          .add(CompanyModel(name: "Test name", email: emailController.text));
+      emailController.clear();
+      FocusScope.of(context).unfocus();
+    }
+    // setState(() {
+    //   companyOffers.addAll({"name": "Adam"});
+    // });
+    // debugPrint(companyOffers.length.toString());
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    companyOffers = {};
+    companyOffers =
+        Provider.of<AllCompaniesModel>(context, listen: false).items;
+    //Provider.of<AllCompaniesModel>(context, listen: false)
   }
 
   @override
@@ -52,7 +75,6 @@ class BuildingManagementScreenState extends State<BuildingManagementScreen> {
         child: Scaffold(
           appBar: AppBar(
             toolbarHeight: 100,
-            //leadingWidth: 70,
             leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -85,29 +107,51 @@ class BuildingManagementScreenState extends State<BuildingManagementScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                const TextField(
-                  decoration: InputDecoration(
-                      labelText: 'Management company email',
-                      border: OutlineInputBorder()),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        controller: emailController,
+                        validator: _validateEmail,
+                        decoration: const InputDecoration(
+                            labelText: 'Management company email',
+                            border: OutlineInputBorder()),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      FilledButton(
+                          onPressed: addCompany,
+                          child: const Text('Send an invitation')),
+                    ],
+                  ),
                 ),
-                const SizedBox(
-                  height: 25,
-                ),
-                FilledButton(
-                    onPressed: addCompany,
-                    child: const Text('Send an invitation')),
                 const SizedBox(
                   height: 25,
                 ),
                 const Divider(),
                 CompanyOffers(companyOffers: companyOffers),
               ],
-            ),
-            //),
+            ), //),
             //],
           ),
         ),
       ),
     );
+  }
+}
+
+class ApprovedCompanyScreen extends StatefulWidget {
+  const ApprovedCompanyScreen({super.key});
+
+  @override
+  State<ApprovedCompanyScreen> createState() => ApprovedCompanyScreenState();
+}
+
+class ApprovedCompanyScreenState extends State<ApprovedCompanyScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return const Text("placeholder");
   }
 }
