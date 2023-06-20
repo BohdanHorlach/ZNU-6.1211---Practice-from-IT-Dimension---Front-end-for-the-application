@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/domain/models/management_companies/companies_data.dart';
+import 'package:provider/provider.dart';
+
 import '../../app_screens/building_management_screen.dart';
 import '../assets_path.dart';
 import 'menu_option.dart';
 
-class InvoiceTableOption extends StatelessWidget {
-  const InvoiceTableOption({super.key});
+class BuildingManagementOption extends StatelessWidget {
+  const BuildingManagementOption({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MenuOption(
-      title: 'Invoice Table',
-      iconRoute: folderIcon,
-      borderColor: Color.fromRGBO(192, 150, 0, 1),
-      nextScreen: BuildingManagementScreen(),
-    );
+    debugPrint("build...");
+    return Consumer<ApprovedCompany>(builder: (context, company, child) {
+      var nextScreen = company.isApprovedCompany
+          ? const ApprovedCompanyScreen()
+          : const BuildingManagementScreen();
+      return MenuOption(
+        title: 'Building Management',
+        iconRoute: houseIcon,
+        borderColor: const Color.fromRGBO(0, 68, 148, 1),
+        nextScreen: nextScreen,
+      );
+    });
   }
 }
+
 
 class CollectionOption extends StatelessWidget {
   const CollectionOption({super.key});
@@ -31,29 +41,31 @@ class CollectionOption extends StatelessWidget {
   }
 }
 
-class BuildingManagementOption extends StatelessWidget {
-  const BuildingManagementOption({super.key});
+class InvoiceTableOption extends StatelessWidget {
+  const InvoiceTableOption({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MenuOption(
-      title: 'Building Management',
-      iconRoute: houseIcon,
-      borderColor: Color.fromRGBO(0, 68, 148, 1),
+      title: 'Invoice Table',
+      iconRoute: folderIcon,
+      borderColor: Color.fromRGBO(192, 150, 0, 1),
       nextScreen: BuildingManagementScreen(),
     );
   }
 }
 
-class ServiceCallOption extends StatelessWidget {
-  const ServiceCallOption({super.key});
+//
+
+class AccountStatusOption extends StatelessWidget {
+  const AccountStatusOption({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MenuOption(
-      title: 'Service call',
-      iconRoute: exclamationMarkIcon,
-      borderColor: Color.fromRGBO(198, 107, 2, 1),
+      title: 'Account Status',
+      iconRoute: moneyIcon,
+      borderColor: Color.fromRGBO(0, 110, 5, 1),
       nextScreen: BuildingManagementScreen(),
     );
   }
@@ -73,29 +85,31 @@ class PaymentsOption extends StatelessWidget {
   }
 }
 
-class AccountStatusOption extends StatelessWidget {
-  const AccountStatusOption({super.key});
+class ServiceCallOption extends StatelessWidget {
+  const ServiceCallOption({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MenuOption(
-      title: 'Account Status',
-      iconRoute: moneyIcon,
-      borderColor: Color.fromRGBO(0, 110, 5, 1),
+      title: 'Service call',
+      iconRoute: exclamationMarkIcon,
+      borderColor: Color.fromRGBO(198, 107, 2, 1),
       nextScreen: BuildingManagementScreen(),
     );
   }
 }
 
-class BuildingMaintenanceOption extends StatelessWidget {
-  const BuildingMaintenanceOption({super.key});
+//
+
+class TenantRoomOption extends StatelessWidget {
+  const TenantRoomOption({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MenuOption(
-      title: 'Building Maintenance',
-      iconRoute: toolBoxIcon,
-      borderColor: Color.fromRGBO(174, 25, 61, 1),
+      title: 'Tenant Room',
+      iconRoute: paperIcon,
+      borderColor: Color.fromRGBO(150, 28, 208, 1),
       nextScreen: BuildingManagementScreen(),
     );
   }
@@ -115,15 +129,31 @@ class ProfessionalsOption extends StatelessWidget {
   }
 }
 
-class TenantRoomOption extends StatelessWidget {
-  const TenantRoomOption({super.key});
+class BuildingMaintenanceOption extends StatelessWidget {
+  const BuildingMaintenanceOption({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MenuOption(
-      title: 'Tenant Room',
-      iconRoute: paperIcon,
-      borderColor: Color.fromRGBO(150, 28, 208, 1),
+      title: 'Building Maintenance',
+      iconRoute: toolBoxIcon,
+      borderColor: Color.fromRGBO(174, 25, 61, 1),
+      nextScreen: BuildingManagementScreen(),
+    );
+  }
+}
+
+//
+
+class ForumOption extends StatelessWidget {
+  const ForumOption({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MenuOption(
+      title: 'Forum',
+      iconRoute: forumIcon,
+      borderColor: Color.fromRGBO(1, 35, 210, 1),
       nextScreen: BuildingManagementScreen(),
     );
   }
@@ -143,19 +173,7 @@ class DiscussionOption extends StatelessWidget {
   }
 }
 
-class ForumOption extends StatelessWidget {
-  const ForumOption({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MenuOption(
-      title: 'Forum',
-      iconRoute: forumIcon,
-      borderColor: Color.fromRGBO(1, 35, 210, 1),
-      nextScreen: BuildingManagementScreen(),
-    );
-  }
-}
+//
 
 class ManagementFeeOption extends StatelessWidget {
   const ManagementFeeOption({super.key});
@@ -170,6 +188,8 @@ class ManagementFeeOption extends StatelessWidget {
     );
   }
 }
+
+//
 
 class RevenuesOption extends StatelessWidget {
   const RevenuesOption({super.key});
@@ -214,3 +234,22 @@ class JobBoardOption extends StatelessWidget {
     );
   }
 }
+
+List<Widget> mainMenuOptions = [
+  const BuildingManagementOption(),
+  const CollectionOption(),
+  const InvoiceTableOption(),
+  //
+  const AccountStatusOption(),
+  const PaymentsOption(),
+  const ServiceCallOption(),
+  //
+  const TenantRoomOption(),
+  const ProfessionalsOption(),
+  const BuildingMaintenanceOption(),
+  //
+  const ForumOption(),
+  const DiscussionOption(),
+  //
+  const ManagementFeeOption(),
+];

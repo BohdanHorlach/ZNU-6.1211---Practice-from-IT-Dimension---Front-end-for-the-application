@@ -13,34 +13,6 @@ class MenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //return
-
-    //   Column(
-    //   children: [
-    //     TextButton(
-    //       style: TextButton.styleFrom(
-    //         shape: RoundedRectangleBorder(
-    //             borderRadius: BorderRadius.circular(30)),
-    //         backgroundColor: color,
-    //       ),
-    //       onPressed: () {
-    //         debugPrint("test");
-    //       },
-    //       child: Row(
-    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //         children: [
-    //           icon,
-    //           Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-    //           const Icon(Icons.arrow_forward),
-    //         ],
-    //       ),
-    //     ),
-    //     const SizedBox(
-    //       height: 10,
-    //     ),
-    //   ],
-    // );
-    //TODO sep
     return Column(
       children: [
         ListTile(

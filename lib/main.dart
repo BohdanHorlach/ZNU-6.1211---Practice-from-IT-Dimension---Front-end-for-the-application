@@ -14,6 +14,7 @@ import 'main_screen/screens.dart';
 void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => AllCompaniesModel()),
+    ChangeNotifierProvider(create: (context) => ApprovedCompany()),
     //another models...
   ], child: const App()));
 }
