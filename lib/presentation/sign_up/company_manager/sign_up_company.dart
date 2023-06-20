@@ -33,7 +33,7 @@ class _SignUpCompanyState extends State<SignUpCompany> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'Company Info'),
+            const MainNamePage(text: 'Company data'),
             entryField,
             const Divider(),
             verifyingDocument,
