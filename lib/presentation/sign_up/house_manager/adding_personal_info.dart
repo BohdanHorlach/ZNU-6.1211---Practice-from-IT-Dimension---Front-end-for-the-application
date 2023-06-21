@@ -50,7 +50,7 @@ class _AddingPersonalInfoState extends State<AddingPersonalInfo> {
                   });
                   if (isCompletedForm == true) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ChoiceVotinType(
+                        builder: (context) => ChoiceVotingType(
                             firstAndLastName:
                                 listEntryField.listController[0].text)));
                   }

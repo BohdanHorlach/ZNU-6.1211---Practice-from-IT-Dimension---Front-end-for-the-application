@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/domain/models/floor/apartment_model.dart';
-import 'package:flutter_application_1/domain/models/floor/floor_model.dart';
+import '../../../domain/models/floor/apartment_model.dart';
+import '../../../domain/models/floor/floor_model.dart';
 import '../../sign_up/house_manager/edit_floor.dart';
 
 // ignore: must_be_immutable

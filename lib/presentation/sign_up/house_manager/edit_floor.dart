@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/domain/models/floor/apartment_model.dart';
-import 'package:flutter_application_1/domain/models/floor/floor_model.dart';
-import 'package:flutter_application_1/presentation/widgets/custom_button.dart';
-import 'package:flutter_application_1/presentation/widgets/main_name_page.dart';
+
+import '../../../domain/models/floor/apartment_model.dart';
+import '../../../domain/models/floor/floor_model.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/main_name_page.dart';
 
 class ControllerFromApartmentText {
   final numberTheApartment = TextEditingController();
@@ -13,6 +14,7 @@ class ControllerFromApartmentText {
 // ignore: must_be_immutable
 class EditFloor extends StatefulWidget {
   FloorModel thisFloor = FloorModel([]);
+
   EditFloor({super.key, required this.thisFloor});
 
   @override

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/widgets/main_name_page.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/check_status/voting.dart';
 import '../../widgets/check_status/first_resident.dart';
 import '../../widgets/custom_button.dart';
-import '../../widgets/custom_dropduwn_button.dart';
+import '../../widgets/custom_dropdown_button.dart';
+import '../../widgets/main_name_page.dart';
 
-class ChoiceVotinType extends StatefulWidget {
+class ChoiceVotingType extends StatefulWidget {
   final String firstAndLastName;
-  const ChoiceVotinType({super.key, required this.firstAndLastName});
+  const ChoiceVotingType({super.key, required this.firstAndLastName});
 
   @override
-  State<ChoiceVotinType> createState() => _ChoiceVotinTypeState();
+  State<ChoiceVotingType> createState() => _ChoiceVotingTypeState();
 }
 
-class _ChoiceVotinTypeState extends State<ChoiceVotinType> {
+class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
   VerifyingDocument verifyingDocument = VerifyingDocument();
   Voting voting = Voting();
   FirstResident firstResident = FirstResident();
@@ -24,7 +24,7 @@ class _ChoiceVotinTypeState extends State<ChoiceVotinType> {
     'I was elected by vote',
     'I am the first tenant to install the app'
   ];
-  Widget curentWidget = Container();
+  Widget currentWidget = Container();
 
   CustomDropdownButton dropdownButton =
       CustomDropdownButton(label: '', listChoice: const [], updateState: () {});
@@ -38,10 +38,10 @@ class _ChoiceVotinTypeState extends State<ChoiceVotinType> {
         listChoice: choice,
         updateState: () {
           setState(() {
-            curentWidget = listShowWidgets[dropdownButton.selectedIndex];
+            currentWidget = listShowWidgets[dropdownButton.selectedIndex];
           });
         });
-    curentWidget = listShowWidgets[dropdownButton.selectedIndex];
+    currentWidget = listShowWidgets[dropdownButton.selectedIndex];
   }
 
   @override
@@ -60,7 +60,7 @@ class _ChoiceVotinTypeState extends State<ChoiceVotinType> {
             const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
             dropdownButton,
             const Padding(padding: EdgeInsets.only(top: 20), child: Divider()),
-            curentWidget,
+            currentWidget,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: CustomButton(
