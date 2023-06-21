@@ -36,7 +36,7 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
-            const MainNamePage(text: 'Location of the building'),
+            const MainNamePageSignUp(text: 'Location of the building'),
             entryField,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),

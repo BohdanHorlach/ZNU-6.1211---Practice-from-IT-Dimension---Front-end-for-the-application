@@ -22,7 +22,7 @@ class _ProofStatusState extends State<ProofStatus> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'Proof your status'),
+            const MainNamePageSignUp(text: 'Proof your status'),
             const Padding(padding: EdgeInsets.only(top: 20), child: Divider()),
             verifyingDocument,
             Padding(

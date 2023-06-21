@@ -62,7 +62,7 @@ class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'Employee data'),
+            const MainNamePageSignUp(text: 'Employee data'),
             entryField,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),

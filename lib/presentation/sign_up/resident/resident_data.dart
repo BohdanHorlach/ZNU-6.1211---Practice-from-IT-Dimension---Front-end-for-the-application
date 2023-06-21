@@ -32,7 +32,7 @@ class _ResidentDataState extends State<ResidentData> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'Your data'),
+            const MainNamePageSignUp(text: 'Your data'),
             entryField,
             const Padding(padding: EdgeInsets.symmetric(vertical: 15)),
             CustomButton(

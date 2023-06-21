@@ -86,7 +86,7 @@ class _EditFloorState extends State<EditFloor> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: ListView(
             children: <Widget>[
-              const MainNamePage(text: 'Edit floor'),
+              const MainNamePageSignUp(text: 'Edit floor'),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: TextField(

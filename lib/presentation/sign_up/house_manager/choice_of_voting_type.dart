@@ -5,7 +5,7 @@ import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/check_status/voting.dart';
 import '../../widgets/check_status/first_resident.dart';
 import '../../widgets/custom_button.dart';
-import '../../widgets/custom_dropduwn_button.dart';
+import '../../widgets/custom_dropdown_button.dart';
 
 class ChoiceVotingType extends StatefulWidget {
   final String firstAndLastName;
@@ -56,7 +56,7 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
           children: <Widget>[
             Container(
               alignment: Alignment.topLeft,
-              child: const MainNamePage(text: 'Status check'),
+              child: const MainNamePageSignUp(text: 'Status check'),
             ),
             const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
             dropdownButton,

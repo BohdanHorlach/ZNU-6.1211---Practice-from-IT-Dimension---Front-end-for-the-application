@@ -33,7 +33,7 @@ class _SignUpResidentState extends State<SignUpResident> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'House data'),
+            const MainNamePageSignUp(text: 'House data'),
             entryField,
             const Padding(padding: EdgeInsets.symmetric(vertical: 15)),
             CustomButton(

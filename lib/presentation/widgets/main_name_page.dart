@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MainNamePage extends StatelessWidget {
+class MainNamePageSignUp extends StatelessWidget {
   final String text;
 
-  const MainNamePage({super.key, required this.text});
+  const MainNamePageSignUp({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

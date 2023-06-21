@@ -33,7 +33,7 @@ class ChangeHouseState extends State<ChangeHouse> {
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: ListView(
           children: [
-            const MainNamePage(text: 'Building defenitions'),
+            const MainNamePageSignUp(text: 'Building defenitions'),
             Container(
               decoration: BoxDecoration(
                   border: Border.all(),

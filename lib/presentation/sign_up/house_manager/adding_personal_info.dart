@@ -37,7 +37,7 @@ class _AddingPersonalInfoState extends State<AddingPersonalInfo> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
-            const MainNamePage(text: 'Personal Information'),
+            const MainNamePageSignUp(text: 'Personal Information'),
             listEntryField,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),

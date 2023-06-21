@@ -15,7 +15,7 @@ class CustomTextMain extends StatelessWidget {
     // Return a Text widget with the text and a custom style
     return Text(
       text,
-      style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+      style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
     );
   }
 }
