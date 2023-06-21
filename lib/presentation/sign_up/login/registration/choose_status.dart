@@ -1,10 +1,10 @@
 // Import Flutter packages for gestures and material design widgets
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:university_project/presentation/sign_up/company_manager/sign_up_company.dart';
-import 'package:university_project/presentation/sign_up/employee/sign_up_employee.dart';
-import 'package:university_project/presentation/sign_up/house_manager/sign_up_house_manager.dart';
-import 'package:university_project/presentation/sign_up/resident/sign_up_resident.dart';
+import 'package:flutter_application_1/presentation/sign_up/company_manager/sign_up_company.dart';
+import 'package:flutter_application_1/presentation/sign_up/employee/sign_up_employee.dart';
+import 'package:flutter_application_1/presentation/sign_up/house_manager/sign_up_house_manager.dart';
+import 'package:flutter_application_1/presentation/sign_up/resident/sign_up_resident.dart';
 
 // Import login screen widget
 import '../login.dart';
@@ -35,7 +35,7 @@ class _ChooseStatusState extends State<ChooseStatus> {
   final GlobalKey _textFieldKey = GlobalKey();
 
   // Declare a nullable field for storing the selected item from the menu
-  String? _selectedItem = 'Item 1';
+  String? _selectedItem = 'House manager';
 
   // Override initState method to initialize the text controller with the selected item
   @override
@@ -125,7 +125,7 @@ class _ChooseStatusState extends State<ChooseStatus> {
                               'House manager',
                               'Management company',
                               'Resident',
-                              'Service Provider'
+                              'Service provider'
                             ]
                                 .map((String value) => PopupMenuItem<String>(
                                       // Set the value of the menu item as the string value
@@ -175,7 +175,7 @@ class _ChooseStatusState extends State<ChooseStatus> {
                                   // Navigate to the login screen
                                   customPush(context, const SignUpResident());
                                   break;
-                                case 'Service Provider':
+                                case 'Service provider':
                                   // Navigate to the login screen
                                   customPush(
                                       context, const SignUpServiceProvider());

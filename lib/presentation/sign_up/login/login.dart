@@ -1,7 +1,7 @@
 // Import Flutter package for material design widgets
 import 'package:flutter/material.dart';
-import 'package:university_project/presentation/sign_up/login/registration/choose_status.dart';
-import 'package:university_project/presentation/sign_up/login/restore_password/restore_password_send.dart';
+import 'package:flutter_application_1/presentation/sign_up/login/registration/choose_status.dart';
+import 'package:flutter_application_1/presentation/sign_up/login/restore_password/restore_password_send.dart';
 
 // Import custom widgets for email input, page navigation and text display
 import '../../widgets/custom_email.dart';

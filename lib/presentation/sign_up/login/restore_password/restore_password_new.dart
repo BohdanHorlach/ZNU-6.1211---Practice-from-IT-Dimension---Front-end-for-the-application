@@ -1,6 +1,6 @@
 // Import Flutter package for material design widgets
 import 'package:flutter/material.dart';
-import 'package:university_project/presentation/sign_up/login/restore_password/restore_password_sent.dart';
+import 'package:flutter_application_1/presentation/sign_up/login/restore_password/restore_password_sent.dart';
 
 
 // Import custom widgets for replacing the current page with a new page with a fade transition and text display
