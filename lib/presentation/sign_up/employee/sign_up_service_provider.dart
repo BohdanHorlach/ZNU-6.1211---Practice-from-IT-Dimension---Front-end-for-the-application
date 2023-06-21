@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
 import '../../widgets/custom_button.dart';
-import '../../widgets/custom_dropdown_button.dart';
+import '../../widgets/custom_dropduwn_button.dart';
 
-class SignUpServiceProvider extends StatefulWidget {
-  const SignUpServiceProvider({super.key});
+class SignUpEmployee extends StatefulWidget {
+  const SignUpEmployee({super.key});
 
   @override
-  State<SignUpServiceProvider> createState() => _SignUpServiceProviderState();
+  State<SignUpEmployee> createState() => _SignUpEmployeeState();
 }
 
-class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
+class _SignUpEmployeeState extends State<SignUpEmployee> {
   final ListEntryField entryField = ListEntryField(
     listLabel: const ['Company Name', 'E-mail', 'Phone Number', 'Password'],
     listTypeInput: const [
@@ -82,8 +83,7 @@ class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
                     isCompletedForm = entryField.isComplete();
                   });
                   if (isCompletedForm == true) {
-                    print(
-                        "${entryField.toStringShort()}$selectedChoice|${verifyingDocument.toStringShort()}");
+                    log("${entryField.toStringShort()}$selectedChoice|${verifyingDocument.toStringShort()}");
                   }
                 },
               ),
