@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-Route createRoute(Widget routeTo) {
+Route createRouteHorizontalSlide(Widget routeTo, {String? routeName}) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => routeTo,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -15,5 +15,6 @@ Route createRoute(Widget routeTo) {
         child: child,
       );
     },
+    settings: routeName != null ? RouteSettings(name: routeName) : null,
   );
 }

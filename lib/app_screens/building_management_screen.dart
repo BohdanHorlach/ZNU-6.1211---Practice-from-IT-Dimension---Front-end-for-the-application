@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_screens/widgets/management_company_card.dart';
 import 'package:flutter_application_1/domain/models/management_companies/companies_data.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class BuildingManagementScreen extends StatefulWidget {
@@ -15,11 +16,8 @@ class BuildingManagementScreen extends StatefulWidget {
 class BuildingManagementScreenState extends State<BuildingManagementScreen> {
   static const mainColor = Color.fromRGBO(0, 68, 148, 1);
 
-  //final _companyInvitationFormKey = GlobalKey<FormState>();
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
-
-  //late List<CompanyModel> companyOffers;
 
   String? _validateEmail(value) {
     if (value == null || value.isEmpty) {
@@ -42,15 +40,9 @@ class BuildingManagementScreenState extends State<BuildingManagementScreen> {
   @override
   void dispose() {
     emailController.dispose();
+    //_focusNode.dispose();
     super.dispose();
   }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   companyOffers =
-  //       Provider.of<AllCompaniesModel>(context, listen: false).items;
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +61,12 @@ class BuildingManagementScreenState extends State<BuildingManagementScreen> {
           appBar: AppBar(
             toolbarHeight: 100,
             leading: IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+              ),
               onPressed: () {
-                Navigator.pop(context);
+                context.pop();
               },
-              icon: const Icon(Icons.arrow_back),
             ),
             title: const Text(
               'Building management',
@@ -105,6 +99,7 @@ class BuildingManagementScreenState extends State<BuildingManagementScreen> {
                   child: Column(
                     children: <Widget>[
                       TextFormField(
+                        //focusNode: _focusNode,
                         controller: emailController,
                         validator: _validateEmail,
                         decoration: const InputDecoration(
@@ -114,9 +109,12 @@ class BuildingManagementScreenState extends State<BuildingManagementScreen> {
                       const SizedBox(
                         height: 25,
                       ),
-                      FilledButton(
-                          onPressed: addCompany,
-                          child: const Text('Send an invitation')),
+                      SizedBox(
+                        width: double.infinity,
+                        child: FilledButton(
+                            onPressed: addCompany,
+                            child: const Text('Send an invitation')),
+                      ),
                     ],
                   ),
                 ),
@@ -172,10 +170,12 @@ class ApprovedCompanyScreenState extends State<ApprovedCompanyScreen> {
           appBar: AppBar(
             toolbarHeight: 100,
             leading: IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+              ),
               onPressed: () {
-                Navigator.pop(context);
+                context.pop();
               },
-              icon: const Icon(Icons.arrow_back),
             ),
             title: const Text(
               'Building management',
@@ -194,12 +194,12 @@ class ApprovedCompanyScreenState extends State<ApprovedCompanyScreen> {
             padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: ListView(
               children: <Widget>[
-                const Text('Management company',
-                    style:
-                        TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
                 const SizedBox(
                   height: 25,
                 ),
+                const Text('Management company',
+                    style:
+                        TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
                 ManagementCompanyCardApproved(
                   company: company,
                 ),
@@ -207,6 +207,10 @@ class ApprovedCompanyScreenState extends State<ApprovedCompanyScreen> {
                   height: 25,
                 ),
                 const Divider(),
+                const Text(
+                  "Permissions",
+                  textAlign: TextAlign.center,
+                ),
               ],
             ), //),
             //],

@@ -46,6 +46,10 @@ flutter_svg
 2.19
 file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_svg-2.0.7/
 file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_svg-2.0.7/lib/
+go_router
+2.18
+file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/go_router-8.0.5/
+file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/go_router-8.0.5/lib/
 js
 2.19
 file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7/
@@ -54,6 +58,10 @@ lints
 3.0
 file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1/
 file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1/lib/
+logging
+2.19
+file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.2.0/
+file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.2.0/lib/
 matcher
 2.18
 file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.15/
@@ -142,4 +150,8 @@ flutter_test
 3.0
 file:///C:/src/flutter/packages/flutter_test/
 file:///C:/src/flutter/packages/flutter_test/lib/
+flutter_web_plugins
+3.0
+file:///C:/src/flutter/packages/flutter_web_plugins/
+file:///C:/src/flutter/packages/flutter_web_plugins/lib/
 2

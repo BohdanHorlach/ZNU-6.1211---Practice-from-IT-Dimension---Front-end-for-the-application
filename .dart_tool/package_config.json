@@ -80,6 +80,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///C:/src/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "go_router",
+      "rootUri": "file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/go_router-8.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "js",
       "rootUri": "file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -90,6 +102,12 @@
       "rootUri": "file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "logging",
+      "rootUri": "file:///C:/Users/%D0%9F%D0%BE%D1%81%D1%83%D0%BD%D1%8C%D0%BA%D0%BE%D0%9C%D0%B8%D0%BA%D0%B8%D1%82%D0%B0%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "matcher",
@@ -218,7 +236,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-20T10:01:39.128100Z",
+  "generated": "2023-06-21T08:01:26.883883Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }

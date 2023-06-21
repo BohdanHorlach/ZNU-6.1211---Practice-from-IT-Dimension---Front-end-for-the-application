@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../app_screens/route.dart';
+import 'package:go_router/go_router.dart';
 
 class MenuOption extends StatelessWidget {
   const MenuOption(
       {required this.title,
       required this.iconRoute,
       required this.borderColor,
-      required this.nextScreen,
+      required this.routeName,
       this.height,
       this.width,
       super.key});
@@ -17,7 +17,7 @@ class MenuOption extends StatelessWidget {
   final String title;
   final double? width;
   final double? height;
-  final Widget nextScreen;
+  final String routeName;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class MenuOption extends StatelessWidget {
       children: <Widget>[
         OutlinedButton(
           onPressed: () {
-            Navigator.of(context).push(createRoute(nextScreen));
+            context.go(routeName);
           },
           style: OutlinedButton.styleFrom(
             shape: RoundedRectangleBorder(

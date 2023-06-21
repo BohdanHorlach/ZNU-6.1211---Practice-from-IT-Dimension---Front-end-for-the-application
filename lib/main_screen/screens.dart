@@ -20,7 +20,7 @@ class MainScreenManager extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Navigator.of(context)
-                .push(createRoute(const AdditionalMenuManager()));
+                .push(createRouteHorizontalSlide(const AdditionalMenuManager()));
           },
           icon: const Icon(Icons.menu),
         ),
@@ -195,7 +195,7 @@ class MainScreenManagementCompany extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Navigator.of(context)
-                .push(createRoute(const AdditionalMenuManager()));
+                .push(createRouteHorizontalSlide(const AdditionalMenuManager()));
           },
           icon: const Icon(Icons.menu),
         ),
@@ -344,7 +344,7 @@ class MainScreenTenant extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).push(createRoute(const AdditionalTenant()));
+            Navigator.of(context).push(createRouteHorizontalSlide(const AdditionalTenant()));
           },
           icon: const Icon(Icons.menu),
         ),
@@ -487,7 +487,7 @@ class MainScreenWorker extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).push(createRoute(const AdditionalWorker()));
+            Navigator.of(context).push(createRouteHorizontalSlide(const AdditionalWorker()));
           },
           icon: const Icon(Icons.menu),
         ),

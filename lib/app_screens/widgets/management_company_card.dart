@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/domain/models/management_companies/companies_data.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../main_screen/assets_path.dart';
-import '../building_management_screen.dart';
 
+/// All [ManagementCompanyCard]s or message that not offers for now
 class CompanyOffers extends StatelessWidget {
   const CompanyOffers({super.key});
 
@@ -14,13 +15,18 @@ class CompanyOffers extends StatelessWidget {
     return Consumer<AllCompaniesModel>(
       builder: (context, companies, child) {
         if (companies.items.isEmpty) {
-          return const Column(
+          return Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: 5, bottom: 20),
+              const Padding(
+                padding: EdgeInsets.only(top: 10, bottom: 20),
                 child: Text(
                     textAlign: TextAlign.center,
-                    "Don't worry, you will soon receive a response from a management company."),
+                    "Don't worry, you will soon receive a response"
+                    " from a management company."),
+              ),
+              Opacity(
+                opacity: 0.08,
+                child: SvgPicture.asset(logoBlockChange),
               ),
             ],
           );
@@ -32,16 +38,16 @@ class CompanyOffers extends StatelessWidget {
                 child: Text(
                     textAlign: TextAlign.center, "Management company offers"),
               ),
+
               //
 
-              Consumer<AllCompaniesModel>(
-                  builder: (context, companies, child) => Column(
-                        children: companies.items
-                            .map((company) => ManagementCompanyCard(
-                                  company: company,
-                                ))
-                            .toList(),
-                      )),
+              Column(
+                children: companies.items
+                    .map((company) => ManagementCompanyCard(
+                          company: company,
+                        ))
+                    .toList(),
+              ),
             ],
           );
         }
@@ -50,6 +56,7 @@ class CompanyOffers extends StatelessWidget {
   }
 }
 
+/// Icons that in [ManagementCompanyCard] contacts row
 class IconInCircle extends StatelessWidget {
   const IconInCircle({required this.icon, super.key});
 
@@ -69,6 +76,7 @@ class IconInCircle extends StatelessWidget {
   }
 }
 
+/// Column with company avatar, name, email, contacts
 class _ManagementCompanyCardTopPart extends StatelessWidget {
   const _ManagementCompanyCardTopPart({required this.company});
 
@@ -141,15 +149,31 @@ class _ManagementCompanyCardTopPart extends StatelessWidget {
   }
 }
 
+/// Approve and remove buttons of the company card
 class _ManagementCompanyCardButtons extends StatelessWidget {
   const _ManagementCompanyCardButtons(
-      {required this.onApprove, required this.onRemove});
+      {required this.company, this.isBottomSheet = false});
 
-  final void Function() onApprove;
-  final void Function() onRemove;
+  final CompanyModel company;
+  final bool isBottomSheet;
 
   @override
   Widget build(BuildContext context) {
+    void onApprove() {
+      Provider.of<ApprovedCompany>(context, listen: false).addCompany(company);
+      if (isBottomSheet) {
+        Navigator.of(context).pop();
+      }
+      context.replace("/approved");
+    }
+
+    void onRemove() {
+      Provider.of<AllCompaniesModel>(context, listen: false).remove(company);
+      if (isBottomSheet) {
+        Navigator.of(context).pop();
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 25, bottom: 10, top: 10),
       child: Row(
@@ -174,8 +198,6 @@ class ManagementCompanyCard extends StatelessWidget {
 
   final CompanyModel company;
 
-  void remove() {}
-
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       showDragHandle: true,
@@ -193,19 +215,8 @@ class ManagementCompanyCard extends StatelessWidget {
           height: 10,
         ),
         _ManagementCompanyCardButtons(
-          onApprove: () {
-            Provider.of<ApprovedCompany>(context, listen: false)
-                .addCompany(company);
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const ApprovedCompanyScreen()),
-            );
-          },
-          onRemove: () {
-            Provider.of<AllCompaniesModel>(context, listen: false)
-                .remove(company);
-          },
+          company: company,
+          isBottomSheet: true,
         ),
         const SizedBox(
           height: 50,
@@ -236,20 +247,7 @@ class ManagementCompanyCard extends StatelessWidget {
                   ),
                   const Divider(),
                   _ManagementCompanyCardButtons(
-                    onApprove: () {
-                      Provider.of<ApprovedCompany>(context, listen: false)
-                          .addCompany(company);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const ApprovedCompanyScreen()),
-                      );
-                    },
-                    onRemove: () {
-                      Provider.of<AllCompaniesModel>(context, listen: false)
-                          .remove(company);
-                    },
+                    company: company,
                   ),
                 ])),
           ],
@@ -287,9 +285,12 @@ class ManagementCompanyCardApproved extends StatelessWidget {
                           .removeCompany();
                       Provider.of<AllCompaniesModel>(context, listen: false)
                           .remove(company);
-                      Navigator.of(context).pop();
+                      context.pop();
                     },
-                    child: const Text("Remove"))
+                    child: const Text("Remove")),
+                const SizedBox(
+                  height: 10,
+                ),
               ],
             )),
       ],

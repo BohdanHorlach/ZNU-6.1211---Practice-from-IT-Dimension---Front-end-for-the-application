@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/domain/models/management_companies/companies_data.dart';
 import 'package:provider/provider.dart';
 
-import '../../app_screens/building_management_screen.dart';
 import '../assets_path.dart';
 import 'menu_option.dart';
 
@@ -13,19 +12,16 @@ class BuildingManagementOption extends StatelessWidget {
   Widget build(BuildContext context) {
     debugPrint("build...");
     return Consumer<ApprovedCompany>(builder: (context, company, child) {
-      var nextScreen = company.isApprovedCompany
-          ? const ApprovedCompanyScreen()
-          : const BuildingManagementScreen();
+      String nextRoute = company.isApprovedCompany ? '/approved' : '/management';
       return MenuOption(
         title: 'Building Management',
         iconRoute: houseIcon,
         borderColor: const Color.fromRGBO(0, 68, 148, 1),
-        nextScreen: nextScreen,
+        routeName: nextRoute,
       );
     });
   }
 }
-
 
 class CollectionOption extends StatelessWidget {
   const CollectionOption({super.key});
@@ -36,7 +32,7 @@ class CollectionOption extends StatelessWidget {
       title: 'Collection',
       iconRoute: handWithMoneyIcon,
       borderColor: Color.fromRGBO(8, 139, 148, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -50,7 +46,7 @@ class InvoiceTableOption extends StatelessWidget {
       title: 'Invoice Table',
       iconRoute: folderIcon,
       borderColor: Color.fromRGBO(192, 150, 0, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -66,7 +62,7 @@ class AccountStatusOption extends StatelessWidget {
       title: 'Account Status',
       iconRoute: moneyIcon,
       borderColor: Color.fromRGBO(0, 110, 5, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -80,7 +76,7 @@ class PaymentsOption extends StatelessWidget {
       title: 'Payments',
       iconRoute: paymentCardIcon,
       borderColor: Color.fromRGBO(125, 146, 0, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -94,7 +90,7 @@ class ServiceCallOption extends StatelessWidget {
       title: 'Service call',
       iconRoute: exclamationMarkIcon,
       borderColor: Color.fromRGBO(198, 107, 2, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -110,7 +106,7 @@ class TenantRoomOption extends StatelessWidget {
       title: 'Tenant Room',
       iconRoute: paperIcon,
       borderColor: Color.fromRGBO(150, 28, 208, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -124,7 +120,7 @@ class ProfessionalsOption extends StatelessWidget {
       title: 'Professionals',
       iconRoute: caseIcon,
       borderColor: Color.fromRGBO(158, 3, 3, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -138,7 +134,7 @@ class BuildingMaintenanceOption extends StatelessWidget {
       title: 'Building Maintenance',
       iconRoute: toolBoxIcon,
       borderColor: Color.fromRGBO(174, 25, 61, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -154,7 +150,7 @@ class ForumOption extends StatelessWidget {
       title: 'Forum',
       iconRoute: forumIcon,
       borderColor: Color.fromRGBO(1, 35, 210, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -168,7 +164,7 @@ class DiscussionOption extends StatelessWidget {
       title: 'Discussion',
       iconRoute: libraIcon,
       borderColor: Color.fromRGBO(1, 90, 193, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -184,7 +180,7 @@ class ManagementFeeOption extends StatelessWidget {
       title: 'Management Fee',
       iconRoute: reportIcon,
       borderColor: Color.fromRGBO(192, 150, 0, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -200,7 +196,7 @@ class RevenuesOption extends StatelessWidget {
       title: 'Revenues',
       iconRoute: diagramIcon,
       borderColor: Color.fromRGBO(1, 90, 193, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -214,7 +210,7 @@ class HistoryOption extends StatelessWidget {
       title: 'History',
       iconRoute: caseTimeIcon,
       borderColor: Color.fromRGBO(192, 150, 0, 1),
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
@@ -230,7 +226,7 @@ class JobBoardOption extends StatelessWidget {
       borderColor: Color.fromRGBO(0, 68, 148, 1),
       width: 400,
       height: 200,
-      nextScreen: BuildingManagementScreen(),
+      routeName: '/management',
     );
   }
 }
