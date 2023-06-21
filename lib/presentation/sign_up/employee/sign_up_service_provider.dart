@@ -4,7 +4,7 @@ import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
 import '../../widgets/custom_button.dart';
-import '../../widgets/custom_dropduwn_button.dart';
+import '../../widgets/custom_dropdown_button.dart';
 
 class SignUpServiceProvider extends StatefulWidget {
   const SignUpServiceProvider({super.key});
