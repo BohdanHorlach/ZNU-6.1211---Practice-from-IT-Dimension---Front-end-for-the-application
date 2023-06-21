@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import '../house_manager/change_house.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/main_name_page.dart';
@@ -24,7 +25,7 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
   //ЗАГЛУШКА
   void _onClick() {
     String result = entryField.toStringShort();
-    print(result);
+    log(result);
   }
 
   @override
