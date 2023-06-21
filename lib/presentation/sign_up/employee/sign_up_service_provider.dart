@@ -6,14 +6,14 @@ import '../../widgets/list_entry_field.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_dropduwn_button.dart';
 
-class SignUpEmployee extends StatefulWidget {
-  const SignUpEmployee({super.key});
+class SignUpServiceProvider extends StatefulWidget {
+  const SignUpServiceProvider({super.key});
 
   @override
-  State<SignUpEmployee> createState() => _SignUpEmployeeState();
+  State<SignUpServiceProvider> createState() => _SignUpServiceProviderState();
 }
 
-class _SignUpEmployeeState extends State<SignUpEmployee> {
+class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
   final ListEntryField entryField = ListEntryField(
     listLabel: const ['Company Name', 'E-mail', 'Phone Number', 'Password'],
     listTypeInput: const [
