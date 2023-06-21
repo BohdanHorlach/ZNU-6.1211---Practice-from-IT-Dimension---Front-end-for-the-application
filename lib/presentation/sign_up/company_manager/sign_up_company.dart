@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/main_name_page.dart';
@@ -46,7 +47,7 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                   setState(() {
                     isCompletedForm = entryField.isComplete();
                   });
-                  print(isCompletedForm.toString());
+                  log(isCompletedForm.toString());
                 },
               ),
             ),
