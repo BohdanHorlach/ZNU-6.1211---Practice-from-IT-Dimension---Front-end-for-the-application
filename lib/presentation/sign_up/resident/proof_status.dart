@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/custom_button.dart';
@@ -29,7 +30,7 @@ class _ProofStatusState extends State<ProofStatus> {
               child: CustomButton(
                   textButton: 'Save',
                   onClick: () {
-                    print(verifyingDocument.toStringShort());
+                    log(verifyingDocument.toStringShort());
                   }),
             ),
             const Padding(

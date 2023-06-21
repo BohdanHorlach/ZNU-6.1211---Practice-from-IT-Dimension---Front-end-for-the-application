@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import '../resident/resident_data.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
@@ -43,7 +44,7 @@ class _SignUpResidentState extends State<SignUpResident> {
                   isCompletedForm = entryField.isComplete();
                 });
                 if (isCompletedForm == true) {
-                  print(entryField.toStringShort());
+                  log(entryField.toStringShort());
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const ResidentData()));
                 }

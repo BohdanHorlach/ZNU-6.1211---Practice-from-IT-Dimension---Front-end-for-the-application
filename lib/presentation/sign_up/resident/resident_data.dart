@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import './proof_status.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
@@ -44,7 +45,7 @@ class _ResidentDataState extends State<ResidentData> {
                 if (isCompletedForm == true) {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const ProofStatus()));
-                  print(entryField.toStringShort());
+                  log(entryField.toStringShort());
                 }
               },
             )
