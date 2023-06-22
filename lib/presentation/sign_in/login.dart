@@ -1,15 +1,14 @@
 // Import Flutter package for material design widgets
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/sign_up/login/registration/choose_status.dart';
-import 'package:flutter_application_1/presentation/sign_up/login/restore_password/restore_password_send.dart';
+import 'registration/choose_status.dart';
+import 'restore_password/restore_password_send.dart';
 
 // Import custom widgets for email input, page navigation and text display
-import '../../widgets/custom_email.dart';
-import '../../widgets/custom_push.dart';
-import '../../widgets/custom_text_main.dart';
+import '../widgets/custom_email.dart';
+import '../widgets/custom_push.dart';
+import '../widgets/custom_text_main.dart';
 
 // Import widgets for registration and restore password screens
-
 
 // Define Login class as a StatefulWidget
 class Login extends StatefulWidget {

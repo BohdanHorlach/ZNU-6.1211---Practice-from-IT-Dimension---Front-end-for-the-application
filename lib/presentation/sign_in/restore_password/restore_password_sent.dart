@@ -4,14 +4,14 @@ import 'dart:async';
 // Import Flutter package for material design widgets
 import 'package:flutter/material.dart';
 import '../restore_password/restore_password_new.dart';
-import '../restore_password/restore_password_send.dart';
+import 'restore_password_send.dart';
 
 // Import widgets for restore password new and send screens
 
 // Import custom widgets for navigating to a new page with a fade transition and text display
-import '../../../widgets/custom_push.dart';
-import '../../../widgets/custom_push_replacement.dart';
-import '../../../widgets/custom_text_main.dart';
+import '../../widgets/custom_push.dart';
+import '../../widgets/custom_push_replacement.dart';
+import '../../widgets/custom_text_main.dart';
 
 // Define RestorePasswordSent class as a StatefulWidget
 class RestorePasswordSent extends StatefulWidget {
