@@ -1,7 +1,9 @@
 import 'apartment_data.dart';
 
+enum UserType { houseManager, resident, company, serviceProvider }
+
 class UserData {
-  String firstAndLastName = '';
+  UserType typeOfUser = UserType.resident;
   String email = '';
   String phone = '';
   bool status = false;
