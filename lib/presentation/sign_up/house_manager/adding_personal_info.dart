@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../domain/user/user_data.dart';
 import '../house_manager/choice_of_voting_type.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
@@ -11,7 +13,8 @@ class AddingPersonalInfo extends StatefulWidget {
 }
 
 class _AddingPersonalInfoState extends State<AddingPersonalInfo> {
-  final listEntryField = ListEntryField(listLabel: const [
+  String name = '', email = '', phone = '';
+  final entryField = ListEntryField(listLabel: const [
     'First name Last Name',
     'E-mail',
     'Phone Number',
@@ -37,7 +40,7 @@ class _AddingPersonalInfoState extends State<AddingPersonalInfo> {
         child: ListView(
           children: [
             const MainNamePageSignUp(text: 'Personal Information'),
-            listEntryField,
+            entryField,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: ElevatedButton(
@@ -45,13 +48,18 @@ class _AddingPersonalInfoState extends State<AddingPersonalInfo> {
                 onPressed: () {
                   bool isCompletedForm = true;
                   setState(() {
-                    isCompletedForm = listEntryField.isComplete();
+                    isCompletedForm = entryField.isComplete();
+                    name = entryField.listController[0].text;
+                    email = entryField.listController[1].text;
+                    phone = entryField.listController[2].text;
                   });
                   if (isCompletedForm == true) {
+                    context
+                        .read<UserData>()
+                        .changeBasedData(name, email, phone);
+                    context.read<UserData>().changeType(UserType.houseManager);
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ChoiceVotingType(
-                            firstAndLastName:
-                                listEntryField.listController[0].text)));
+                        builder: (context) => const ChoiceVotingType()));
                   }
                 },
               ),

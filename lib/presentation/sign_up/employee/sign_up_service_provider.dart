@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../domain/user/user_data.dart';
 import 'dart:developer';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/main_name_page.dart';
@@ -13,6 +15,7 @@ class SignUpServiceProvider extends StatefulWidget {
 }
 
 class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
+  String name = '', email = '', phone = '';
   final ListEntryField entryField = ListEntryField(
     listLabel: const ['Company Name', 'E-mail', 'Phone Number', 'Password'],
     listTypeInput: const [
@@ -80,8 +83,17 @@ class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
                   bool isCompletedForm = true;
                   setState(() {
                     isCompletedForm = entryField.isComplete();
+                    name = entryField.listController[0].text;
+                    email = entryField.listController[1].text;
+                    phone = entryField.listController[2].text;
                   });
                   if (isCompletedForm == true) {
+                    context
+                        .read<UserData>()
+                        .changeBasedData(name, email, phone);
+                    context
+                        .read<UserData>()
+                        .changeType(UserType.serviceProvider);
                     log("${entryField.toStringShort()}$selectedChoice|${verifyingDocument.toStringShort()}");
                   }
                 },

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'dart:developer';
+import '../../../domain/user/user_data.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/check_status/voting.dart';
@@ -7,8 +9,7 @@ import '../../widgets/check_status/first_resident.dart';
 import '../../widgets/custom_dropdown_button.dart';
 
 class ChoiceVotingType extends StatefulWidget {
-  final String firstAndLastName;
-  const ChoiceVotingType({super.key, required this.firstAndLastName});
+  const ChoiceVotingType({super.key});
 
   @override
   State<ChoiceVotingType> createState() => _ChoiceVotingTypeState();
@@ -33,19 +34,19 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
   void initState() {
     super.initState();
     listShowWidgets = [verifyingDocument, voting, firstResident];
+    curentWidget = listShowWidgets[dropdownButton.selectedIndex];
+  }
+
+  @override
+  Widget build(BuildContext context) {
     dropdownButton = CustomDropdownButton(
-        label: widget.firstAndLastName,
+        label: context.watch<UserData>().getName,
         listChoice: choice,
         updateState: () {
           setState(() {
             curentWidget = listShowWidgets[dropdownButton.selectedIndex];
           });
         });
-    curentWidget = listShowWidgets[dropdownButton.selectedIndex];
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
