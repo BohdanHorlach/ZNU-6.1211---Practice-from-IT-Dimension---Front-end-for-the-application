@@ -1,8 +1,8 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
-import '../../widgets/custom_button.dart';
 
 class SignUpCompany extends StatefulWidget {
   const SignUpCompany({super.key});
@@ -33,20 +33,20 @@ class _SignUpCompanyState extends State<SignUpCompany> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'Company data'),
+            const MainNamePageSignUp(text: 'Company data'),
             entryField,
             const Divider(),
             verifyingDocument,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
-              child: CustomButton(
-                textButton: 'Save',
-                onClick: () {
+              child: ElevatedButton(
+                child: const Text('Save'),
+                onPressed: () {
                   bool isCompletedForm = true;
                   setState(() {
                     isCompletedForm = entryField.isComplete();
                   });
-                  print(isCompletedForm.toString());
+                  log(isCompletedForm.toString());
                 },
               ),
             ),

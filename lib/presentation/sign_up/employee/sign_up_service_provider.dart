@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
-import '../../widgets/custom_button.dart';
 import '../../widgets/custom_dropdown_button.dart';
 
 class SignUpServiceProvider extends StatefulWidget {
@@ -61,7 +61,7 @@ class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'Employee data'),
+            const MainNamePageSignUp(text: 'Employee data'),
             entryField,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -74,16 +74,15 @@ class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
             verifyingDocument,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
-              child: CustomButton(
-                textButton: 'Save',
-                onClick: () {
+              child: ElevatedButton(
+                child: const Text('Save'),
+                onPressed: () {
                   bool isCompletedForm = true;
                   setState(() {
                     isCompletedForm = entryField.isComplete();
                   });
                   if (isCompletedForm == true) {
-                    print(
-                        "${entryField.toStringShort()}$selectedChoice|${verifyingDocument.toStringShort()}");
+                    log("${entryField.toStringShort()}$selectedChoice|${verifyingDocument.toStringShort()}");
                   }
                 },
               ),

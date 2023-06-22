@@ -5,10 +5,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 // Import custom widget for replacing the current page with a new page with a fade transition
-import '../../widgets/custom_push_replacement.dart';
+import '../widgets/custom_push_replacement.dart';
 
 // Import login screen widget
-import '../login/login.dart';
+import '../sign_in/login/login.dart';
 
 // Define a loading screen widget class as a StatefulWidget
 class Loading extends StatefulWidget {

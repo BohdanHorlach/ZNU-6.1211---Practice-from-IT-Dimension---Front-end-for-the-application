@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
+import '../../widgets/main_name_page.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/check_status/voting.dart';
 import '../../widgets/check_status/first_resident.dart';
-import '../../widgets/custom_button.dart';
 import '../../widgets/custom_dropdown_button.dart';
-import '../../widgets/main_name_page.dart';
 
 class ChoiceVotingType extends StatefulWidget {
   final String firstAndLastName;
@@ -24,7 +24,7 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
     'I was elected by vote',
     'I am the first tenant to install the app'
   ];
-  Widget currentWidget = Container();
+  Widget curentWidget = Container();
 
   CustomDropdownButton dropdownButton =
       CustomDropdownButton(label: '', listChoice: const [], updateState: () {});
@@ -38,10 +38,10 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
         listChoice: choice,
         updateState: () {
           setState(() {
-            currentWidget = listShowWidgets[dropdownButton.selectedIndex];
+            curentWidget = listShowWidgets[dropdownButton.selectedIndex];
           });
         });
-    currentWidget = listShowWidgets[dropdownButton.selectedIndex];
+    curentWidget = listShowWidgets[dropdownButton.selectedIndex];
   }
 
   @override
@@ -55,18 +55,18 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
           children: <Widget>[
             Container(
               alignment: Alignment.topLeft,
-              child: const MainNamePage(text: 'Status check'),
+              child: const MainNamePageSignUp(text: 'Status check'),
             ),
             const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
             dropdownButton,
             const Padding(padding: EdgeInsets.only(top: 20), child: Divider()),
-            currentWidget,
+            curentWidget,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
-              child: CustomButton(
-                textButton: 'Save',
-                onClick: () {
-                  print(listShowWidgets[dropdownButton.selectedIndex]
+              child: ElevatedButton(
+                child: const Text('Save'),
+                onPressed: () {
+                  log(listShowWidgets[dropdownButton.selectedIndex]
                       .toStringShort());
                 },
               ),

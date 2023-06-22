@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
-import '../../widgets/custom_button.dart';
 
 class ProofStatus extends StatefulWidget {
   const ProofStatus({super.key});
@@ -21,15 +21,15 @@ class _ProofStatusState extends State<ProofStatus> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'Proof your status'),
+            const MainNamePageSignUp(text: 'Proof your status'),
             const Padding(padding: EdgeInsets.only(top: 20), child: Divider()),
             verifyingDocument,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 40),
-              child: CustomButton(
-                  textButton: 'Save',
-                  onClick: () {
-                    print(verifyingDocument.toStringShort());
+              child: ElevatedButton(
+                  child: const Text('Save'),
+                  onPressed: () {
+                    log(verifyingDocument.toStringShort());
                   }),
             ),
             const Padding(

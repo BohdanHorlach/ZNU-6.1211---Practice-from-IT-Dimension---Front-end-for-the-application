@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import '../house_manager/change_house.dart';
-import '../../widgets/custom_button.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
 
@@ -24,7 +24,7 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
   //ЗАГЛУШКА
   void _onClick() {
     String result = entryField.toStringShort();
-    print(result);
+    log(result);
   }
 
   @override
@@ -35,13 +35,13 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
-            const MainNamePage(text: 'Location of the building'),
+            const MainNamePageSignUp(text: 'Location of the building'),
             entryField,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
-              child: CustomButton(
-                textButton: 'Go to design',
-                onClick: () {
+              child: ElevatedButton(
+                child: const Text('Go to design'),
+                onPressed: () {
                   bool isCompletedForm = true;
                   setState(() {
                     isCompletedForm = entryField.isComplete();

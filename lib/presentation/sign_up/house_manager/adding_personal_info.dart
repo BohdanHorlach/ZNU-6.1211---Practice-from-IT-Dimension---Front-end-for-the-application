@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../house_manager/choice_of_voting_type.dart';
-import '../../widgets/custom_button.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
 
@@ -37,13 +36,13 @@ class _AddingPersonalInfoState extends State<AddingPersonalInfo> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView(
           children: [
-            const MainNamePage(text: 'Personal Information'),
+            const MainNamePageSignUp(text: 'Personal Information'),
             listEntryField,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
-              child: CustomButton(
-                textButton: 'Go Next',
-                onClick: () {
+              child: ElevatedButton(
+                child: const Text('Go Next'),
+                onPressed: () {
                   bool isCompletedForm = true;
                   setState(() {
                     isCompletedForm = listEntryField.isComplete();

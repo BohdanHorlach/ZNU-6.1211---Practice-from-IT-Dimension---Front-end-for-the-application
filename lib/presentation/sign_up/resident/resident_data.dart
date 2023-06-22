@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import './proof_status.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
-import '../../widgets/custom_button.dart';
 
 class ResidentData extends StatefulWidget {
   const ResidentData({super.key});
@@ -31,12 +31,12 @@ class _ResidentDataState extends State<ResidentData> {
         child: ListView(
           shrinkWrap: true,
           children: [
-            const MainNamePage(text: 'Your data'),
+            const MainNamePageSignUp(text: 'Your data'),
             entryField,
             const Padding(padding: EdgeInsets.symmetric(vertical: 15)),
-            CustomButton(
-              textButton: 'Go Next',
-              onClick: () {
+            ElevatedButton(
+              child: const Text('Go Next'),
+              onPressed: () {
                 bool isCompletedForm = true;
                 setState(() {
                   isCompletedForm = entryField.isComplete();
@@ -44,7 +44,7 @@ class _ResidentDataState extends State<ResidentData> {
                 if (isCompletedForm == true) {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const ProofStatus()));
-                  print(entryField.toStringShort());
+                  log(entryField.toStringShort());
                 }
               },
             )
