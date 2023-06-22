@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class FirstResident extends StatefulWidget {
   String result = 'Check whether the manager is the first tenant';
+
   FirstResident({super.key});
 
   @override

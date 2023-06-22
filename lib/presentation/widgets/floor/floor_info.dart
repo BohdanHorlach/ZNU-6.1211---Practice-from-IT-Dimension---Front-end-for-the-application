@@ -8,6 +8,7 @@ class FloorInfo extends StatefulWidget {
   FloorModel floor = FloorModel([
     ApartmentModel('0', '1'),
   ]);
+
   FloorInfo({super.key});
 
   @override

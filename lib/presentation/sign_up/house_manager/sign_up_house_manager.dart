@@ -21,6 +21,7 @@ class _SignUpHouseManagerState extends State<SignUpHouseManager> {
     ],
     listIsObscureText: const [false, false, false],
   );
+
   //ЗАГЛУШКА
   void _onClick() {
     String result = entryField.toStringShort();

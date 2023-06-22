@@ -12,6 +12,7 @@ class ProofStatus extends StatefulWidget {
 
 class _ProofStatusState extends State<ProofStatus> {
   final verifyingDocument = VerifyingDocument();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

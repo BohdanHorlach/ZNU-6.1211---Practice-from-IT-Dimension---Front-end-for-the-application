@@ -6,11 +6,13 @@ class ListEntryField extends StatefulWidget {
   final List<String> listLabel;
   final List<TextInputType> listTypeInput;
   final List<bool> listIsObscureText;
+
   ListEntryField(
       {super.key,
       required this.listLabel,
       required this.listTypeInput,
       required this.listIsObscureText});
+
   final _ListEntryFieldState _state = _ListEntryFieldState();
 
   bool isComplete() {

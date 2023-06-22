@@ -16,7 +16,7 @@ class ResidentData extends StatefulWidget {
 class _ResidentDataState extends State<ResidentData> {
   String name = '', email = '', phone = '';
   final ListEntryField entryField = ListEntryField(
-    listLabel: const ['First and Last Name', 'E-mail', 'Passwors'],
+    listLabel: const ['First and Last Name', 'E-mail', 'Passwords'],
     listTypeInput: const [
       TextInputType.text,
       TextInputType.text,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class Voting extends StatefulWidget {
   String result = '';
+
   Voting({super.key});
 
   @override

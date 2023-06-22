@@ -12,10 +12,15 @@ class UserData with ChangeNotifier {
   ApartmentData _apartmentData = ApartmentData();
 
   UserType get getTypeUser => _typeOfUser;
+
   String get getFirstAndLastName => _firstAndLastName;
+
   String get getEmail => _email;
+
   String get getPhone => _phone;
+
   bool get getStatus => _status;
+
   ApartmentData get getApartmentData => _apartmentData;
 
   void changeType(UserType newType) {

@@ -25,7 +25,7 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
     'I was elected by vote',
     'I am the first tenant to install the app'
   ];
-  Widget curentWidget = Container();
+  Widget currentWidget = Container();
 
   CustomDropdownButton dropdownButton =
       CustomDropdownButton(label: '', listChoice: const [], updateState: () {});
@@ -34,17 +34,17 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
   void initState() {
     super.initState();
     listShowWidgets = [verifyingDocument, voting, firstResident];
-    curentWidget = listShowWidgets[dropdownButton.selectedIndex];
+    currentWidget = listShowWidgets[dropdownButton.selectedIndex];
   }
 
   @override
   Widget build(BuildContext context) {
     dropdownButton = CustomDropdownButton(
-        label: context.watch<UserData>().getName,
+        label: context.watch<UserData>().getFirstAndLastName,
         listChoice: choice,
         updateState: () {
           setState(() {
-            curentWidget = listShowWidgets[dropdownButton.selectedIndex];
+            currentWidget = listShowWidgets[dropdownButton.selectedIndex];
           });
         });
     return Scaffold(
@@ -61,7 +61,7 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
             const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
             dropdownButton,
             const Padding(padding: EdgeInsets.only(top: 20), child: Divider()),
-            curentWidget,
+            currentWidget,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: ElevatedButton(

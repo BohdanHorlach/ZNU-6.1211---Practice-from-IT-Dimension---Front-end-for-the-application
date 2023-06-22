@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 Future customPushReplacement(BuildContext context, Widget page) {
   // Return the result of pushing a new route to the navigator and removing the previous one
   return Navigator.pushReplacement(
-    // Pass the build context as an argument
+      // Pass the build context as an argument
       context,
       // Create a PageRouteBuilder with custom settings
       PageRouteBuilder(
