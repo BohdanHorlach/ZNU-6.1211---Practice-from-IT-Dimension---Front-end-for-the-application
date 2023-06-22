@@ -4,7 +4,6 @@ import '../../widgets/main_name_page.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/check_status/voting.dart';
 import '../../widgets/check_status/first_resident.dart';
-import '../../widgets/custom_button.dart';
 import '../../widgets/custom_dropdown_button.dart';
 
 class ChoiceVotingType extends StatefulWidget {
@@ -64,9 +63,9 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
             curentWidget,
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
-              child: CustomButton(
-                textButton: 'Save',
-                onClick: () {
+              child: ElevatedButton(
+                child: const Text('Save'),
+                onPressed: () {
                   log(listShowWidgets[dropdownButton.selectedIndex]
                       .toStringShort());
                 },

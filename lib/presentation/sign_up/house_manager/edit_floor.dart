@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../domain/models/floor/apartment_model.dart';
 import '../../../domain/models/floor/floor_model.dart';
-import '../../widgets/custom_button.dart';
 import '../../widgets/main_name_page.dart';
 
 class ControllerFromApartmentText {
@@ -214,8 +212,9 @@ class _EditFloorState extends State<EditFloor> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 30),
-                child: CustomButton(
-                    textButton: 'Save Information', onClick: saveInformation),
+                child: ElevatedButton(
+                    onPressed: saveInformation,
+                    child: const Text('Save Information')),
               ),
               const Divider(),
               const Text(

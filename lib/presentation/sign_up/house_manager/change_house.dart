@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../house_manager/adding_personal_info.dart';
-import '../../widgets/custom_button.dart';
 import '../../widgets/floor/floor_info.dart';
 import '../../widgets/main_name_page.dart';
 
@@ -104,9 +103,9 @@ class ChangeHouseState extends State<ChangeHouse> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 40),
-              child: CustomButton(
-                textButton: 'Go Next',
-                onClick: () {
+              child: ElevatedButton(
+                child: const Text('Go Next'),
+                onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const AddingPersonalInfo()));
                 },
