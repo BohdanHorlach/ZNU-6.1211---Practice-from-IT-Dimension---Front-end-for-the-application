@@ -1,13 +1,13 @@
 // Import Flutter packages for gestures and material design widgets
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/sign_up/company_manager/sign_up_company.dart';
-import 'package:flutter_application_1/presentation/sign_up/employee/sign_up_employee.dart';
-import 'package:flutter_application_1/presentation/sign_up/house_manager/sign_up_house_manager.dart';
-import 'package:flutter_application_1/presentation/sign_up/resident/sign_up_resident.dart';
+import '../../../sign_up/company_manager/sign_up_company.dart';
+import '../../../sign_up/employee/sign_up_service_provider.dart';
+import '../../../sign_up/house_manager/sign_up_house_manager.dart';
+import '../../../sign_up/resident/sign_up_resident.dart';
 
 // Import login screen widget
-import '../login.dart';
+import '../../login.dart';
 
 // Import custom widget for navigating to a new page with a fade transition
 import '../../../widgets/custom_push_replacement.dart';
