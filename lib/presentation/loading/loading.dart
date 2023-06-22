@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_push_replacement.dart';
 
 // Import login screen widget
-import '../sign_in/login/login.dart';
+import '../sign_in/login.dart';
 
 // Define a loading screen widget class as a StatefulWidget
 class Loading extends StatefulWidget {

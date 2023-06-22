@@ -1,6 +1,6 @@
 // Import Flutter packages and loading screen
 import 'package:flutter/material.dart';
-import '../presentation/sign_up/loading/loading.dart';
+import '../presentation/loading/loading.dart';
 
 // Define MyApp class as a StatelessWidget
 class MyApp extends StatelessWidget {

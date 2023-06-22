@@ -7,7 +7,7 @@ import '../../../sign_up/house_manager/sign_up_house_manager.dart';
 import '../../../sign_up/resident/sign_up_resident.dart';
 
 // Import login screen widget
-import '../login.dart';
+import '../../login.dart';
 
 // Import custom widget for navigating to a new page with a fade transition
 import '../../../widgets/custom_push_replacement.dart';
