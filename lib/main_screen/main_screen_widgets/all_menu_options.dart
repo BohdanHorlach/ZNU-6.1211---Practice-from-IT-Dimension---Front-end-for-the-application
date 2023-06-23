@@ -1,25 +1,102 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/domain/models/management_companies/committees_data.dart';
 import 'package:flutter_application_1/domain/models/management_companies/companies_data.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../assets_path.dart';
 import 'menu_option.dart';
 
+Map<String, Widget> committeeOptions = {
+  "Building Management": SvgPicture.asset(houseIcon),
+  "Collection": SvgPicture.asset(handWithMoneyIcon),
+  "Invoice Table": SvgPicture.asset(folderIcon),
+  "Account Status": SvgPicture.asset(moneyIcon),
+  "Payment": SvgPicture.asset(paymentCardIcon),
+  "Service call": SvgPicture.asset(exclamationMarkIcon),
+  "Tenant Room": SvgPicture.asset(paperIcon),
+  "Professionals": SvgPicture.asset(caseIcon),
+  "Building Maintenance": SvgPicture.asset(toolBoxIcon),
+  "Forum": SvgPicture.asset(forumIcon),
+  "Discussion": SvgPicture.asset(libraIcon),
+  "Management Fee": SvgPicture.asset(reportIcon),
+};
+
+Map<String, Widget> companyOptions = {
+  //"Building Management": SvgPicture.asset(houseIcon),
+  "Collection": SvgPicture.asset(handWithMoneyIcon),
+  "Invoice Table": SvgPicture.asset(folderIcon),
+  //
+  "Account Status": SvgPicture.asset(moneyIcon),
+  "Payment": SvgPicture.asset(paymentCardIcon),
+  "Service call": SvgPicture.asset(exclamationMarkIcon),
+  //
+  "Tenant Room": SvgPicture.asset(paperIcon),
+  "Professionals": SvgPicture.asset(caseIcon),
+  "Building Maintenance": SvgPicture.asset(toolBoxIcon),
+  //
+  "Forum": SvgPicture.asset(forumIcon),
+  "Discussion": SvgPicture.asset(libraIcon),
+  //
+  "Management Fee": SvgPicture.asset(reportIcon),
+};
+
+//
+
+final Map<String, Widget> mainMenuOptions = {
+  "Building Management": const BuildingManagementOption(user: User.company),
+  "Collection": const CollectionOption(),
+  "Invoice Table": const InvoiceTableOption(),
+  //
+  "Account Status": const AccountStatusOption(),
+  "Payment": const PaymentsOption(),
+  "Service call": const ServiceCallOption(),
+  //
+  "Tenant Room": const TenantRoomOption(),
+  "Professionals": const ProfessionalsOption(),
+  "Building Maintenance": const BuildingMaintenanceOption(),
+  //
+  "Forum": const ForumOption(),
+  "Discussion": const DiscussionOption(),
+  //
+  "Management Fee":const ManagementFeeOption(),
+};
+
+//
+enum User { manager, company }
+
 class BuildingManagementOption extends StatelessWidget {
-  const BuildingManagementOption({super.key});
+  const BuildingManagementOption({required this.user, super.key});
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("build...");
-    return Consumer<ApprovedCompany>(builder: (context, company, child) {
-      String nextRoute = company.isApprovedCompany ? '/approved' : '/management';
-      return MenuOption(
-        title: 'Building Management',
-        iconRoute: houseIcon,
-        borderColor: const Color.fromRGBO(0, 68, 148, 1),
-        routeName: nextRoute,
-      );
-    });
+    if (user == User.manager) {
+      return Consumer<ApprovedCompanyNotifier>(
+          builder: (context, company, child) {
+        String nextRoute =
+            company.isApprovedCompany ? '/approved' : '/management';
+        return MenuOption(
+          title: 'Building Management',
+          iconRoute: houseIcon,
+          borderColor: const Color.fromRGBO(0, 68, 148, 1),
+          routeName: nextRoute,
+        );
+      });
+    } else {
+      return Consumer<ApprovedCommitteeNotifier>(
+          builder: (context, committee, child) {
+        String nextRoute =
+            committee.isApprovedCommittee ? '/approved' : '/management';
+        return MenuOption(
+          title: 'Building Management',
+          iconRoute: houseIcon,
+          borderColor: const Color.fromRGBO(0, 68, 148, 1),
+          routeName: nextRoute,
+        );
+      });
+    }
   }
 }
 
@@ -230,22 +307,3 @@ class JobBoardOption extends StatelessWidget {
     );
   }
 }
-
-List<Widget> mainMenuOptions = [
-  const BuildingManagementOption(),
-  const CollectionOption(),
-  const InvoiceTableOption(),
-  //
-  const AccountStatusOption(),
-  const PaymentsOption(),
-  const ServiceCallOption(),
-  //
-  const TenantRoomOption(),
-  const ProfessionalsOption(),
-  const BuildingMaintenanceOption(),
-  //
-  const ForumOption(),
-  const DiscussionOption(),
-  //
-  const ManagementFeeOption(),
-];

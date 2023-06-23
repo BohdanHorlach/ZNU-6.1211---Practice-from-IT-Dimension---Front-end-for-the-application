@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/domain/models/management_companies/committees_data.dart';
+import 'package:provider/provider.dart';
 
 import '../app_screens/route.dart';
 import 'additional_menus.dart';
@@ -19,8 +21,8 @@ class MainScreenManager extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(createRouteHorizontalSlide(const AdditionalMenuManager()));
+            Navigator.of(context).push(
+                createRouteHorizontalSlide(const AdditionalMenuManager()));
           },
           icon: const Icon(Icons.menu),
         ),
@@ -60,7 +62,7 @@ class MainScreenManager extends StatelessWidget {
                   Flexible(
                       flex: 5,
                       child: FittedBox(
-                        child: BuildingManagementOption(),
+                        child: BuildingManagementOption(user: User.manager),
                       )),
                   Spacer(),
                   Flexible(
@@ -186,16 +188,12 @@ class MainScreenManagementCompany extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    //   statusBarColor: Colors.white,
-    //   statusBarIconBrightness: Brightness.dark,
-    // ));
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(createRouteHorizontalSlide(const AdditionalMenuManager()));
+            Navigator.of(context).push(
+                createRouteHorizontalSlide(const AdditionalMenuManager()));
           },
           icon: const Icon(Icons.menu),
         ),
@@ -213,123 +211,31 @@ class MainScreenManagementCompany extends StatelessWidget {
           )
         ],
       ),
-      body: const Center(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              //
-
-              SizedBox(
-                height: 10,
-              ),
-
-              // row 1
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Spacer(
-                    flex: 2,
-                  ),
-                  Flexible(
-                      flex: 5,
-                      child: FittedBox(
-                        child: BuildingManagementOption(),
-                      )),
-                  Spacer(),
-                  Flexible(
-                      flex: 5, child: FittedBox(child: CollectionOption())),
-                  Spacer(),
-                  Flexible(
-                      flex: 5,
-                      child: FittedBox(child: BuildingMaintenanceOption())),
-                  Spacer(
-                    flex: 2,
-                  ),
-                ],
-              ),
-
-              //
-
-              SizedBox(
-                height: 10,
-              ),
-
-              // row 2
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Spacer(
-                    flex: 2,
-                  ),
-                  Flexible(
-                      flex: 5,
-                      child: FittedBox(
-                        child: ServiceCallOption(),
-                      )),
-                  Spacer(),
-                  Flexible(
-                      flex: 5, child: FittedBox(child: ManagementFeeOption())),
-                  Spacer(),
-                  Flexible(
-                      flex: 5, child: FittedBox(child: ProfessionalsOption())),
-                  Spacer(
-                    flex: 2,
-                  ),
-                ],
-              ),
-
-              //
-
-              SizedBox(
-                height: 10,
-              ),
-
-              // row 3
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Spacer(
-                    flex: 2,
-                  ),
-                  Flexible(
-                      flex: 5,
-                      child: FittedBox(
-                        child: DiscussionOption(),
-                      )),
-                  Spacer(),
-                  Flexible(
-                      flex: 5,
-                      child: FittedBox(
-                          child: SizedBox(
-                        height: 150,
-                        width: 100,
-                      ))),
-                  Spacer(),
-                  Flexible(
-                      flex: 5,
-                      child: FittedBox(
-                          child: SizedBox(
-                        height: 150,
-                        width: 100,
-                      ))),
-                  Spacer(
-                    flex: 2,
-                  ),
-                ],
-              ),
-
-              //
-              //
-            ]),
+      body: Consumer<ApprovedCommitteeNotifier>(
+        builder: (context, committee, child) {
+          return GridView.count(
+            crossAxisCount: 3,
+            childAspectRatio: 2 / 3,
+            padding: const EdgeInsets.only(
+              left: 30,
+              right: 30,
+              top: 10,
+            ),
+            crossAxisSpacing: 15,
+            children: [
+              ...committeeOptions.keys.map((String permission) {
+                if (committee.permissions.contains(permission)) {
+                  return mainMenuOptions[permission];
+                }
+                return null;
+              }).whereType<Widget>(),
+            ],
+          );
+        },
       ),
     );
   }
 }
-
-//
 
 class MainScreenTenant extends StatelessWidget {
   const MainScreenTenant({super.key});
@@ -344,7 +250,8 @@ class MainScreenTenant extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).push(createRouteHorizontalSlide(const AdditionalTenant()));
+            Navigator.of(context)
+                .push(createRouteHorizontalSlide(const AdditionalTenant()));
           },
           icon: const Icon(Icons.menu),
         ),
@@ -487,7 +394,8 @@ class MainScreenWorker extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).push(createRouteHorizontalSlide(const AdditionalWorker()));
+            Navigator.of(context)
+                .push(createRouteHorizontalSlide(const AdditionalWorker()));
           },
           icon: const Icon(Icons.menu),
         ),

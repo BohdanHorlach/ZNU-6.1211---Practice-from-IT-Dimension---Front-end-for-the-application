@@ -20,7 +20,12 @@ const String questionCircleIcon = 'assets/icons/question_circle.svg';
 const String phoneCircleIcon = 'assets/icons/phone_circle.svg';
 const String managementCompanyIcon = 'assets/icons/management_company.svg';
 const String wwwIcon = 'assets/icons/www.svg';
+// const String doneIcon = 'assets/icons/done_mark.svg';
+// const String xMarkIcon = 'assets/icons/x_mark.svg';
+const String committeeIcon = 'assets/icons/real_estate_agent.svg';
+
 const String logoBlockChange = 'assets/icons/logo_block_change.svg';
+
 
 //images
 

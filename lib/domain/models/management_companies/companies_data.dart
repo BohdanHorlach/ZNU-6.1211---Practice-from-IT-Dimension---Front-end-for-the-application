@@ -15,7 +15,7 @@ class CompanyModel {
 //ID
 }
 
-class AllCompaniesModel extends ChangeNotifier {
+class AllCompaniesNotifier extends ChangeNotifier {
   final List<CompanyModel> _companies = [];
 
   UnmodifiableListView<CompanyModel> get items =>
@@ -32,25 +32,46 @@ class AllCompaniesModel extends ChangeNotifier {
   }
 }
 
+class MenuPermission {
+  MenuPermission({required this.name, required this.isAvailable});
 
-class ApprovedCompany extends ChangeNotifier {
+  final String name;
+  final bool isAvailable;
+}
+
+class ApprovedCompanyNotifier extends ChangeNotifier {
   CompanyModel? company;
-  Map<Widget, bool>? _permissions;
+
+  Set<String> _permissions = {};
 
   bool get isApprovedCompany => company != null;
 
-  UnmodifiableMapView<Widget, bool> get permissions =>
-      UnmodifiableMapView(_permissions!);
+  UnmodifiableSetView<String> get permissions =>
+      UnmodifiableSetView(_permissions);
 
   void addCompany(CompanyModel newCompany) {
     company = newCompany;
-    _permissions = {for (var widget in mainMenuOptions) widget: true};
+    _permissions = {...committeeOptions.keys};
     notifyListeners();
   }
 
   void removeCompany() {
     company = null;
-    _permissions = null;
+    _permissions.clear();
+    notifyListeners();
+  }
+
+  void addPermission(String permission) {
+    _permissions.add(permission);
+    notifyListeners();
+  }
+
+  bool isPermission(String permission) {
+    return _permissions.contains(permission);
+  }
+
+  void removePermission(String permission) {
+    _permissions.remove(permission);
     notifyListeners();
   }
 }
