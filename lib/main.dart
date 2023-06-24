@@ -6,6 +6,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'internal/application.dart';
 import 'package:flutter_application_1/domain/models/management_companies/committees_data.dart';
 import 'package:flutter_application_1/domain/models/management_companies/companies_data.dart';
 import 'package:provider/provider.dart';

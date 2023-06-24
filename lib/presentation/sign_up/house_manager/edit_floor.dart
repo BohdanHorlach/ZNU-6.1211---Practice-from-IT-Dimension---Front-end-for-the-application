@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/domain/models/floor/apartment_model.dart';
-import 'package:flutter_application_1/domain/models/floor/floor_model.dart';
-import 'package:flutter_application_1/presentation/sign%20in/widgets/main_name_page.dart';
+import '../../../domain/models/floor/apartment_model.dart';
+import '../../../domain/models/floor/floor_model.dart';
+import '../../widgets/main_name_page.dart';
 
 class ControllerFromApartmentText {
   final numberTheApartment = TextEditingController();
@@ -12,6 +12,7 @@ class ControllerFromApartmentText {
 // ignore: must_be_immutable
 class EditFloor extends StatefulWidget {
   FloorModel thisFloor = FloorModel([]);
+
   EditFloor({super.key, required this.thisFloor});
 
   @override
@@ -34,7 +35,7 @@ class _EditFloorState extends State<EditFloor> {
 
     for (int i = 0; i < listApartment.length; i++) {
       listToApartCntrl[i].numberTheApartment.text =
-          listApartment[i].numberTheApartment.toString();
+          listApartment[i].numberOfApartments.toString();
 
       listToApartCntrl[i].countOfRooms.text =
           listApartment[i].countOfRooms.toString();
@@ -60,7 +61,7 @@ class _EditFloorState extends State<EditFloor> {
     if (isValid() == true) {
       var listApartment = widget.thisFloor.listApartment;
       for (int i = 0; i < listApartment.length; i++) {
-        listApartment[i].numberTheApartment =
+        listApartment[i].numberOfApartments =
             listToApartCntrl[i].numberTheApartment.text;
 
         listApartment[i].countOfRooms = listToApartCntrl[i].countOfRooms.text;
@@ -83,7 +84,7 @@ class _EditFloorState extends State<EditFloor> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: ListView(
             children: <Widget>[
-              const MainNamePage(text: 'Edit floor'),
+              const MainNamePageSignUp(text: 'Edit floor'),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: TextField(
@@ -137,6 +138,7 @@ class _EditFloorState extends State<EditFloor> {
                             width: 100,
                             child: TextField(
                               controller: listToApartCntrl[index].countOfRooms,
+                              keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 border: const OutlineInputBorder(),
                                 labelText: 'Count Rooms',
@@ -160,9 +162,10 @@ class _EditFloorState extends State<EditFloor> {
                             child: TextField(
                               controller:
                                   listToApartCntrl[index].numberTheApartment,
+                              keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 border: const OutlineInputBorder(),
-                                labelText: 'Count Rooms',
+                                labelText: 'Number Of Apartment',
                                 errorText: listToApartCntrl[index].isEmpty
                                     ? 'Count is Empty'
                                     : null,
@@ -210,12 +213,8 @@ class _EditFloorState extends State<EditFloor> {
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 30),
                 child: ElevatedButton(
-                  onPressed: saveInformation,
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      foregroundColor: Colors.white),
-                  child: const Text('Save Information'),
-                ),
+                    onPressed: saveInformation,
+                    child: const Text('Save Information')),
               ),
               const Divider(),
               const Text(

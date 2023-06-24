@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/domain/models/floor/apartment_model.dart';
-import 'package:flutter_application_1/domain/models/floor/floor_model.dart';
-import 'edit_floor.dart';
+import '../../../domain/models/floor/apartment_model.dart';
+import '../../../domain/models/floor/floor_model.dart';
+import '../../sign_up/house_manager/edit_floor.dart';
 
 // ignore: must_be_immutable
 class FloorInfo extends StatefulWidget {
@@ -59,7 +59,7 @@ class _FloorInfoState extends State<FloorInfo> {
                       (1 / (widget.floor.listApartment.length * 2)),
                   child: Center(
                     child: Text(
-                        widget.floor.listApartment[index].numberTheApartment),
+                        widget.floor.listApartment[index].numberOfApartments),
                   ),
                 ),
               );

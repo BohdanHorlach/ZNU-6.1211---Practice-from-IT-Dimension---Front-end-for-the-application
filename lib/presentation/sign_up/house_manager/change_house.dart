@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentation/sign%20in/widgets/floor/floor_info.dart';
-import 'package:flutter_application_1/presentation/sign%20in/widgets/main_name_page.dart';
+import '../house_manager/adding_personal_info.dart';
+import '../../widgets/floor/floor_info.dart';
+import '../../widgets/main_name_page.dart';
 
 class ChangeHouse extends StatefulWidget {
   const ChangeHouse({super.key});
@@ -31,7 +32,7 @@ class ChangeHouseState extends State<ChangeHouse> {
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: ListView(
           children: [
-            const MainNamePage(text: 'Building defenitions'),
+            const MainNamePageSignUp(text: 'Building defenitions'),
             Container(
               decoration: BoxDecoration(
                   border: Border.all(),
@@ -103,11 +104,11 @@ class ChangeHouseState extends State<ChangeHouse> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 40),
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white),
-                onPressed: () {},
                 child: const Text('Go Next'),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const AddingPersonalInfo()));
+                },
               ),
             ),
           ],
