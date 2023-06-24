@@ -144,12 +144,24 @@ class _RestorePasswordNewState extends State<RestorePasswordNew> {
                                       _isPasswordInvalid1 = true;
                                       _errorText1 = 'Password cannot be empty';
                                     });
+                                  } else if (_passwordController1.text.length <
+                                      8) {
+                                    setState(() {
+                                      _isPasswordInvalid1 = true;
+                                      _errorText1 = 'Password length > 7';
+                                    });
                                   }
                                   // Check if the second password input is empty and update state accordingly
                                   if (_passwordController2.text == '') {
                                     setState(() {
                                       _isPasswordInvalid2 = true;
                                       _errorText2 = 'Password cannot be empty';
+                                    });
+                                  } else if (_passwordController2.text.length <
+                                      8) {
+                                    setState(() {
+                                      _isPasswordInvalid2 = true;
+                                      _errorText2 = 'Password length > 7';
                                     });
                                   }
                                   // Check if the first password input is empty and the second one is not and update state accordingly
@@ -184,7 +196,9 @@ class _RestorePasswordNewState extends State<RestorePasswordNew> {
                                           'Passwords must be the same';
                                     });
                                   } else if (_passwordController1.text != '' &&
-                                      _passwordController2.text != '') {
+                                      _passwordController2.text != '' &&
+                                      _passwordController1.text.length > 7 &&
+                                      _passwordController2.text.length > 7) {
                                     // If both password inputs are not empty and equal, update state and navigate to the login screen
                                     setState(() {
                                       _isPasswordInvalid1 = false;

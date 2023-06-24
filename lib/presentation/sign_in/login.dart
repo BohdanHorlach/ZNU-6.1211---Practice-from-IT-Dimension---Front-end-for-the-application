@@ -33,6 +33,9 @@ class _LoginState extends State<Login> {
   // Define boolean variable to track visibility of password
   bool _isPasswordVisible = false;
 
+  // Declare fields for storing the error texts for the password inputs
+  String _errorText = "";
+
   // Override build method to construct the widget tree
   @override
   Widget build(BuildContext context) {
@@ -89,7 +92,7 @@ class _LoginState extends State<Login> {
                               ),
                               labelText: 'Password',
                               errorText: _isPasswordInvalid
-                                  ? 'Password cannot be empty'
+                                  ? _errorText
                                   : null,
                               suffixIcon: IconButton(
                                 icon: Icon(_isPasswordVisible
@@ -142,8 +145,16 @@ class _LoginState extends State<Login> {
                                   }
                                   // Check if password input is empty and update state accordingly
                                   if (_passwordController.text.isEmpty) {
-                                    setState(() => _isPasswordInvalid = true);
-                                  } else {
+                                    setState(() {
+                                      _isPasswordInvalid = true;
+                                      _errorText = 'Password can\'t be empty';
+                                    });
+                                  } else if (_passwordController.text.length < 8) {
+                                    setState(() {
+                                      _isPasswordInvalid = true;
+                                      _errorText = 'Password length > 7';
+                                    });
+                                  }else {
                                     setState(() => _isPasswordInvalid = false);
                                   }
                                 },
