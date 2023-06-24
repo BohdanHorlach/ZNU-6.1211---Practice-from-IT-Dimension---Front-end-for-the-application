@@ -1,3 +1,5 @@
+//Віджет головної назви сторінки
+
 import 'package:flutter/material.dart';
 
 class MainNamePageSignUp extends StatelessWidget {

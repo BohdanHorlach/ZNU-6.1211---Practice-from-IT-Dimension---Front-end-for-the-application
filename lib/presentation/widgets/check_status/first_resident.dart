@@ -1,3 +1,5 @@
+//Віджет що відображатиме допис для випадку якщо було обрано статус "Перший житель"
+
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
