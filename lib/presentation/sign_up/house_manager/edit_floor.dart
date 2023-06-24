@@ -165,7 +165,7 @@ class _EditFloorState extends State<EditFloor> {
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 border: const OutlineInputBorder(),
-                                labelText: 'Count Rooms',
+                                labelText: 'Number Of Apartment',
                                 errorText: listToApartCntrl[index].isEmpty
                                     ? 'Count is Empty'
                                     : null,

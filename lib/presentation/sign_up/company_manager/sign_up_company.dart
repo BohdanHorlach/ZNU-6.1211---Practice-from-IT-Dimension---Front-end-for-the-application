@@ -2,7 +2,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../domain/user/user_data.dart';
+import '../../main_menu/menus_roots.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
+import '../../widgets/custom_push_replacement.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
 
@@ -60,6 +62,7 @@ class _SignUpCompanyState extends State<SignUpCompany> {
                     context.read<UserData>().changeType(UserType.company);
                   }
                   log(isCompletedForm.toString());
+                  customPushReplacement(context, const CompanyApp());
                 },
               ),
             ),

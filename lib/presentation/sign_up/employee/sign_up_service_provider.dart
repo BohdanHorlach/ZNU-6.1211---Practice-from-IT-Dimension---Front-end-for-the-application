@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../domain/user/user_data.dart';
 import 'dart:developer';
+import '../../main_menu/menus_roots.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
+import '../../widgets/custom_push_replacement.dart';
 import '../../widgets/main_name_page.dart';
 import '../../widgets/list_entry_field.dart';
 import '../../widgets/custom_dropdown_button.dart';
@@ -86,7 +88,9 @@ class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
                     name = entryField.listController[0].text;
                     email = entryField.listController[1].text;
                     phone = entryField.listController[2].text;
-                  });
+                  }
+
+                  );
                   if (isCompletedForm == true) {
                     context
                         .read<UserData>()
@@ -96,6 +100,7 @@ class _SignUpServiceProviderState extends State<SignUpServiceProvider> {
                         .changeType(UserType.serviceProvider);
                     log("${entryField.toStringShort()}$selectedChoice|${verifyingDocument.toStringShort()}");
                   }
+                  customPushReplacement(context, const WorkerApp());
                 },
               ),
             ),
