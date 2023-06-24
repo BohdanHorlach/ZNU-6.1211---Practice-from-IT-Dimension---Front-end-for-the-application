@@ -1,7 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_application_1/main_screen/main_screen_widgets/all_menu_options.dart';
+
+import '../../../presentation/main_menu/widgets/all_menu_options.dart';
 
 class CommitteeModel {
   const CommitteeModel({required this.name, required this.email});
@@ -14,7 +15,6 @@ class CommitteeModel {
 //Company registration number
 //ID
 }
-
 
 class AllCommitteeOffersNotifier extends ChangeNotifier {
   final List<CommitteeModel> _committees = [];
@@ -50,7 +50,7 @@ class ApprovedCommitteeNotifier extends ChangeNotifier {
 
   void removeCommittee() {
     committee = null;
-    _usedPermissions={"Building Management"};
+    _usedPermissions = {"Building Management"};
     notifyListeners();
   }
 

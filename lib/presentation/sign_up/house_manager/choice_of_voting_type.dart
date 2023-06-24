@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'dart:developer';
-import '../../../domain/user/user_data.dart';
-import '../../widgets/main_name_page.dart';
+import 'package:znu_flutter_it_dimension/domain/user/user_data.dart';
+import 'package:znu_flutter_it_dimension/presentation/widgets/custom_push_replacement.dart';
+
+import '../../main_menu/menus_roots.dart';
+import '../../widgets/check_status/first_resident.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
 import '../../widgets/check_status/voting.dart';
-import '../../widgets/check_status/first_resident.dart';
 import '../../widgets/custom_dropdown_button.dart';
+import '../../widgets/main_name_page.dart';
 
 class ChoiceVotingType extends StatefulWidget {
   const ChoiceVotingType({super.key});
@@ -40,7 +44,7 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
   @override
   Widget build(BuildContext context) {
     dropdownButton = CustomDropdownButton(
-        label: context.watch<UserData>().getName,
+        label: context.watch<UserData>().getFirstAndLastName,
         listChoice: choice,
         updateState: () {
           setState(() {
@@ -69,6 +73,7 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
                 onPressed: () {
                   log(listShowWidgets[dropdownButton.selectedIndex]
                       .toStringShort());
+                  customPushReplacement(context, const ManagerApp());
                 },
               ),
             ),

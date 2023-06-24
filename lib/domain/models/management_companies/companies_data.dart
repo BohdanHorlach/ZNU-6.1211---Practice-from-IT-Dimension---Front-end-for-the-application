@@ -1,7 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_application_1/main_screen/main_screen_widgets/all_menu_options.dart';
+
+import '../../../presentation/main_menu/widgets/all_menu_options.dart';
 
 class CompanyModel {
   const CompanyModel({required this.name, required this.email});

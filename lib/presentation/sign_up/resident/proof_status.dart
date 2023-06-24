@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
 import 'dart:developer';
-import '../../widgets/main_name_page.dart';
+
+import 'package:flutter/material.dart';
+
+import '../../main_menu/menus_roots.dart';
 import '../../widgets/check_status/verifying_for_document.dart';
+import '../../widgets/custom_push_replacement.dart';
+import '../../widgets/main_name_page.dart';
 
 class ProofStatus extends StatefulWidget {
   const ProofStatus({super.key});
@@ -12,6 +16,7 @@ class ProofStatus extends StatefulWidget {
 
 class _ProofStatusState extends State<ProofStatus> {
   final verifyingDocument = VerifyingDocument();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +35,7 @@ class _ProofStatusState extends State<ProofStatus> {
                   child: const Text('Save'),
                   onPressed: () {
                     log(verifyingDocument.toStringShort());
+                    customPushReplacement(context, const TenantApp());
                   }),
             ),
             const Padding(
