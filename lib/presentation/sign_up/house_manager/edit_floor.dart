@@ -1,29 +1,42 @@
+//Додавання бібліотеки Flutter
 import 'package:flutter/material.dart';
+
+//Підключення необхідних кастомних віджетів
 import '../../../domain/models/floor/apartment_model.dart';
 import '../../../domain/models/floor/floor_model.dart';
 import '../../widgets/main_name_page.dart';
 
+//Клас для зручного збереження контроллерів полів вводу, що будуть розташованні по двічі у рядку
+//Поля потрібні для зазначеня номеру та кількості кімнат
 class ControllerFromApartmentText {
   final numberTheApartment = TextEditingController();
   final countOfRooms = TextEditingController();
   bool isEmpty = false;
 }
 
+//StatefulWidget для динамічного відображення змін на екрані
 // ignore: must_be_immutable
 class EditFloor extends StatefulWidget {
+  //Стан поверху, зі списком квартир
   FloorModel thisFloor = FloorModel([]);
 
   EditFloor({super.key, required this.thisFloor});
 
+  //Створення сторінки стану, яку буде відображенно
   @override
   State<EditFloor> createState() => _EditFloorState();
 }
 
+//Клас-стан сторінки
 class _EditFloorState extends State<EditFloor> {
+  //Контроллер для поля з описом про тип поверху
   final controllerType = TextEditingController();
   bool typeApartmentIsEmpty = false;
+
+  //Список контролерів для відображення інформації усіх квартир
   List<ControllerFromApartmentText> listToApartCntrl = [];
 
+  //Додавання до віджетів необхідної інформаці
   @override
   void initState() {
     final listApartment = widget.thisFloor.listApartment;
@@ -43,6 +56,7 @@ class _EditFloorState extends State<EditFloor> {
     super.initState();
   }
 
+  //Метод для перевірки чи є пусті поля
   bool isValid() {
     bool isCorrect = true;
     setState(() {
@@ -57,6 +71,7 @@ class _EditFloorState extends State<EditFloor> {
     return isCorrect;
   }
 
+  //Збереження інформації та перехід на минулу сторінку
   Future<bool> saveInformation() {
     if (isValid() == true) {
       var listApartment = widget.thisFloor.listApartment;
@@ -71,20 +86,27 @@ class _EditFloorState extends State<EditFloor> {
     return Future.value(false);
   }
 
+  //Створення сторінки за допомогою методу build що повертає віджет Scaffold, саму сторінку
   @override
   Widget build(BuildContext context) {
+    //Перевизначення кнопки повертання на минулу сторінку.
     return WillPopScope(
       onWillPop: () {
         Navigator.pop(context, widget.thisFloor);
         return Future.value(false);
       },
       child: Scaffold(
+        //AppBar для заповнення вільного місця зверху екрана.
         appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
+          //ListView для можливості прокрутки у разі якщо висоти екрану пристроя не вистачить для відображення
           child: ListView(
             children: <Widget>[
+              //Головна назва сторінки
               const MainNamePageSignUp(text: 'Edit floor'),
+
+              //Поле вводу для визначення типу поверху
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: TextField(
@@ -101,8 +123,11 @@ class _EditFloorState extends State<EditFloor> {
                   },
                 ),
               ),
+
+              //Обмеження місця для відображення доданих квартир до поверху
               ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 250),
+                //ListView.builder для відображення всіх кравтир на поверсі
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: widget.thisFloor.listApartment.length,
@@ -119,6 +144,8 @@ class _EditFloorState extends State<EditFloor> {
                                     Radius.circular(50))),
                             height: 50,
                             width: 50,
+
+                            //Кнопка видалення квартири
                             child: IconButton(
                               onPressed: () {
                                 if (widget.thisFloor.listApartment.length !=
@@ -134,6 +161,7 @@ class _EditFloorState extends State<EditFloor> {
                                   const Icon(Icons.close, color: Colors.black),
                             ),
                           ),
+                          //Поле для визанчення кількості кімнат
                           SizedBox(
                             width: 100,
                             child: TextField(
@@ -157,6 +185,7 @@ class _EditFloorState extends State<EditFloor> {
                               },
                             ),
                           ),
+                          //Поле для визначення номеру квратири
                           SizedBox(
                             width: 150,
                             child: TextField(
@@ -187,6 +216,7 @@ class _EditFloorState extends State<EditFloor> {
                   },
                 ),
               ),
+              //Кнопка додавання нової квартири
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Center(
@@ -210,6 +240,8 @@ class _EditFloorState extends State<EditFloor> {
                   ),
                 ),
               ),
+
+              //Кнопка збереження
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 30),
                 child: ElevatedButton(

@@ -1,3 +1,6 @@
+//Віджет для відображення інформації поверху,
+//був відокремлений черз своЇ розміри за для збереження читабельності коду
+
 import 'package:flutter/material.dart';
 import '../../../domain/models/floor/apartment_model.dart';
 import '../../../domain/models/floor/floor_model.dart';

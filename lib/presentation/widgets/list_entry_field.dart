@@ -1,3 +1,5 @@
+//Віджет для більш зрчного створення поллей вводу, які стилістично однакові
+
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
