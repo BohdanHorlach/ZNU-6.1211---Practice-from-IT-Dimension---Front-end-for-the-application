@@ -58,7 +58,7 @@ class _ChoiceVotingTypeState extends State<ChoiceVotingType> {
   Widget build(BuildContext context) {
     //Ініціалізація списку варіантів відповідей, додано до методу build для коректної змінни віджету у curentWidget
     dropdownButton = CustomDropdownButton(
-        label: context.watch<UserData>().getName,
+        label: context.watch<UserData>().getFirstAndLastName,
         listChoice: choice,
         updateState: () {
           setState(() {

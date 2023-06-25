@@ -3,8 +3,10 @@
 
 import 'package:flutter/material.dart';
 
+//StatefulWidget для динамічного відображення змін на екрані
 // ignore: must_be_immutable
 class Voting extends StatefulWidget {
+  //Поле результату, який буде повертатись при виклику toStringShort
   String result = '';
   Voting({super.key});
 
@@ -13,20 +15,28 @@ class Voting extends StatefulWidget {
     return "Voiting: $result";
   }
 
+  //Створення стану віджету, який буде відображенно
   @override
   State<Voting> createState() => _VotingState();
 }
 
+//Клас-стан віджету
 class _VotingState extends State<Voting> {
+  //Список обов'язкових для заповнення полів тексту
   final listRequiredCntrl = [TextEditingController(), TextEditingController()];
   final listValidateRquired = [false, false];
+
+  //Список можливих для заповнення полів тексту
   List<TextEditingController> listOfPossibleCntrl = [];
   List<bool> listValidatePossible = [];
+
+  //змінні для зручного налаштування розмірів обмежувальних вікон та віджетів
   double heightList = 0;
   double heightWidget = 70;
   double maxHeightList = 140;
   double freeSpaceFromPossibleField = 120;
 
+  //Метод для збереження інформації
   void setResult() {
     widget.result = '';
     for (int i = 0; i < listRequiredCntrl.length; i++) {
@@ -38,9 +48,11 @@ class _VotingState extends State<Voting> {
   }
 
   @override
+  //Створення віджету за допомогою методу build.
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //Декоративний текст
         const Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Text(
@@ -48,6 +60,9 @@ class _VotingState extends State<Voting> {
             style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
         ),
+
+        //Обов'язкові поля вводу
+        //ListView.builder для автоматичної побудови віджетів за списком
         ListView.builder(
           shrinkWrap: true,
           itemCount: listRequiredCntrl.length,
@@ -74,6 +89,9 @@ class _VotingState extends State<Voting> {
             );
           },
         ),
+
+        //Можливі поля вводу з кнопкою видалення голосу
+        //ListView.builder для автоматичної побудови віджетів за списком
         SizedBox(
           height: listOfPossibleCntrl.length <= 1 ? heightList : maxHeightList,
           child: ListView.builder(
@@ -124,6 +142,8 @@ class _VotingState extends State<Voting> {
             },
           ),
         ),
+
+        //Кнопка додавання голосу
         Ink(
           padding: const EdgeInsets.symmetric(vertical: 10),
           decoration:

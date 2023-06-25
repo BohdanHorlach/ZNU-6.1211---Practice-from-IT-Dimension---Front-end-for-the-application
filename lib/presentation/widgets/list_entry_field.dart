@@ -4,9 +4,16 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class ListEntryField extends StatefulWidget {
+  //Список контролерів для зберігання тексту
   List<TextEditingController> listController = [];
+
+  //Список описів полів вводу
   final List<String> listLabel;
+
+  //Список типів введення даних
   final List<TextInputType> listTypeInput;
+
+  //Список для зазанечення чи будуть тест прихованим
   final List<bool> listIsObscureText;
   ListEntryField(
       {super.key,
@@ -29,7 +36,9 @@ class ListEntryField extends StatefulWidget {
   State<ListEntryField> createState() => _state;
 }
 
+//Клас-стан віджету
 class _ListEntryFieldState extends State<ListEntryField> {
+  //Списки описів, типу введення, чи пусті поля, та чи прихований текст
   List<String> listLabel = [];
   List<TextInputType> listTypeInput = [];
   List<bool> validateIsEmpty = [];
@@ -47,6 +56,7 @@ class _ListEntryFieldState extends State<ListEntryField> {
     }
   }
 
+  //Перевірка на те чи пусте поле
   bool checkField() {
     bool isCompletedForm = true;
     setState(() {
@@ -69,18 +79,27 @@ class _ListEntryFieldState extends State<ListEntryField> {
     return result;
   }
 
+  //Створення віджету за допомогою методу build.
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
+      //Задання кількості елементів
       itemCount: widget.listController.length,
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: TextField(
+            //Додавання контролера
             controller: widget.listController[index],
+
+            //Визначення типу тексту
             keyboardType: listTypeInput[index],
+
+            //Чи буде тест прихованим
             obscureText: listObscureText[index],
+
+            //Стилізація поля
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
               labelText: listLabel[index],
@@ -88,6 +107,8 @@ class _ListEntryFieldState extends State<ListEntryField> {
                   ? '${listLabel[index]} is Empty'
                   : null,
             ),
+
+            //На той випадок якщо з поля все буде стерто, для відображення помилки
             onChanged: (value) {
               setState(() {
                 validateIsEmpty[index] =
